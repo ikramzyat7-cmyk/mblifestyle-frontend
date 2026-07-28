@@ -339,7 +339,7 @@ function AdminCategories() {
                 <tbody>
                   {categories.map((category) => {
                     const thumbUrl = category.image
-                      ? `http://127.0.0.1:8000/storage/${category.image}`
+                      ? `https://mblifestyle-backend-production.up.railway.app/storage/${category.image}`
                       : null;
 
                     return (

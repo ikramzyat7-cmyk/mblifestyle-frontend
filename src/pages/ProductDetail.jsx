@@ -137,9 +137,9 @@ function ProductDetail() {
   const hasSizes = availableSizes.length > 0;
   const specs = product.specs ? Object.entries(product.specs).filter(([, v]) => v) : [];
 
-  const generalImages = images.map((img) => `http://127.0.0.1:8000/storage/${img}`);
+  const generalImages = images.map((img) => `https://mblifestyle-backend-production.up.railway.app/storage/${img}`);
   const colorSpecificImages = selectedColorData?.images?.length > 0
-    ? selectedColorData.images.map((img) => `http://127.0.0.1:8000/storage/${img}`)
+    ? selectedColorData.images.map((img) => `https://mblifestyle-backend-production.up.railway.app/storage/${img}`)
     : [];
   const colorImages = selectedColorData && colorSpecificImages.length > 0
     ? colorSpecificImages
@@ -227,9 +227,9 @@ function ProductDetail() {
       {review.image && (
         <div className="pd-review-photo">
           <img
-            src={`http://127.0.0.1:8000/storage/${review.image}`}
+            src={`https://mblifestyle-backend-production.up.railway.app/storage/${review.image}`}
             alt="Photo client"
-            onClick={() => window.open(`http://127.0.0.1:8000/storage/${review.image}`, '_blank')}
+            onClick={() => window.open(`https://mblifestyle-backend-production.up.railway.app/storage/${review.image}`, '_blank')}
           />
         </div>
       )}
@@ -367,7 +367,7 @@ function ProductDetail() {
                       title={colorNames[c.hex] || c.hex}
                     >
                       {c.images?.length > 0 ? (
-                        <img src={`http://127.0.0.1:8000/storage/${c.images[0]}`} alt={colorNames[c.hex]} />
+                        <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${c.images[0]}`} alt={colorNames[c.hex]} />
                       ) : (
                         <span style={{ backgroundColor: c.hex, width: '100%', height: '100%', display: 'block', borderRadius: '4px' }} />
                       )}
@@ -619,7 +619,7 @@ function ProductDetail() {
               {recentProducts.slice(0, 4).map((p) => (
                 <div key={p.id} className="pd-recent-card" onClick={() => navigate(`/produit/${p.id}`)}>
                   <div className="pd-recent-img">
-                    {p.images?.[0] ? <img src={`http://127.0.0.1:8000/storage/${p.images[0]}`} alt={p.name} /> : <div className="pd-recent-placeholder">👕</div>}
+                    {p.images?.[0] ? <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${p.images[0]}`} alt={p.name} /> : <div className="pd-recent-placeholder">👕</div>}
                   </div>
                   <p className="pd-recent-name">{p.name}</p>
                   <p className="pd-recent-price">

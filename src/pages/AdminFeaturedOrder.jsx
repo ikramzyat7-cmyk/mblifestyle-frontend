@@ -114,7 +114,7 @@ function AdminFeaturedOrder() {
                           <div className="afo-image">
                             {product.images?.[0] ? (
                               <img
-                                src={`http://127.0.0.1:8000/storage/${product.images[0]}`}
+                                src={`https://mblifestyle-backend-production.up.railway.app/storage/${product.images[0]}`}
                                 alt={product.name}
                               />
                             ) : (

@@ -247,9 +247,9 @@ function AdminSlides() {
                 <div key={slide.id} className={`slide-card ${!slide.is_active ? 'inactive' : ''}`}>
                   <div className="slide-card-image">
                     {slide.product_image ? (
-                      <img src={`http://127.0.0.1:8000/storage/${slide.product_image}`} alt={slide.title} />
+                      <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${slide.product_image}`} alt={slide.title} />
                     ) : slide.image ? (
-                      <img src={`http://127.0.0.1:8000/storage/${slide.image}`} alt={slide.title} />
+                      <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${slide.image}`} alt={slide.title} />
                     ) : (
                       <div className="slide-card-placeholder">
                         {slide.type === 'video' ? '🎬 Vidéo' : 'Pas d\'image'}

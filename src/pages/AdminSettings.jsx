@@ -191,7 +191,7 @@ function AdminSettings() {
                   <label>Photo produit (droite)</label>
                   <input type="file" accept="image/*" onChange={(e) => setForm({ ...form, promo_image_file: e.target.files[0] })} />
                   {form.promo_image && !form.promo_image_file && (
-                    <img src={`http://127.0.0.1:8000/storage/${form.promo_image}`} alt="Promo" style={{ width: '120px', height: '80px', objectFit: 'contain', marginTop: '8px', borderRadius: '6px', border: '1px solid #e0e0e0' }} />
+                    <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${form.promo_image}`} alt="Promo" style={{ width: '120px', height: '80px', objectFit: 'contain', marginTop: '8px', borderRadius: '6px', border: '1px solid #e0e0e0' }} />
                   )}
                   {form.promo_image_file && (
                     <img src={URL.createObjectURL(form.promo_image_file)} alt="Aperçu" style={{ width: '120px', height: '80px', objectFit: 'contain', marginTop: '8px', borderRadius: '6px', border: '1px solid #cc0000' }} />
@@ -216,7 +216,7 @@ function AdminSettings() {
                   </label>
                 </div>
                 {form.nouveautes_image && !form.nouveautes_image_file && (
-                  <img src={`http://127.0.0.1:8000/storage/${form.nouveautes_image}`} alt="Nouveautés" style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #e0e0e0', marginTop: '12px' }} />
+                  <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${form.nouveautes_image}`} alt="Nouveautés" style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #e0e0e0', marginTop: '12px' }} />
                 )}
                 {form.nouveautes_image_file && (
                   <img src={URL.createObjectURL(form.nouveautes_image_file)} alt="Aperçu" style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #cc0000', marginTop: '12px' }} />
@@ -258,7 +258,7 @@ function AdminSettings() {
         />
         {form[`lookbook_image_${n}`] && !form[`lookbook_image_${n}_file`] && (
           <img
-            src={`http://127.0.0.1:8000/storage/${form[`lookbook_image_${n}`]}`}
+            src={`https://mblifestyle-backend-production.up.railway.app/storage/${form[`lookbook_image_${n}`]}`}
             alt={`Lookbook ${n}`}
             style={{ width: '100%', maxHeight: '120px', objectFit: 'cover', borderRadius: '6px', marginTop: '8px' }}
           />

@@ -93,7 +93,7 @@ function AdminNewArrivals() {
                 <tbody>
                   {products.map((product) => {
                     const thumbUrl = product.images?.[0]
-                      ? `http://127.0.0.1:8000/storage/${product.images[0]}`
+                      ? `https://mblifestyle-backend-production.up.railway.app/storage/${product.images[0]}`
                       : null;
 
                     const formattedDate = new Date(product.created_at).toLocaleDateString('fr-FR', {

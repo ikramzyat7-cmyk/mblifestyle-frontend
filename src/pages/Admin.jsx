@@ -530,7 +530,7 @@ else if (categoryFilter) {
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
                                   >
-                                    <img src={`http://127.0.0.1:8000/storage/${img}`} alt={`existante-${index}`} />
+                                    <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${img}`} alt={`existante-${index}`} />
                                     <span className="image-preview-badge">
                                       {index === 0 ? 'Recto' : index === 1 ? 'Verso' : index + 1}
                                     </span>
@@ -789,7 +789,7 @@ else if (categoryFilter) {
               <tbody>
               {filteredProducts.map((product) => {
                   const thumbUrl = product.images?.[0]
-                    ? `http://127.0.0.1:8000/storage/${product.images[0]}`
+                    ? `https://mblifestyle-backend-production.up.railway.app/storage/${product.images[0]}`
                     : null;
   
                   return (

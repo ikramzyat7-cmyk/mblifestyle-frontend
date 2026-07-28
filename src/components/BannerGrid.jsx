@@ -30,7 +30,7 @@ function BannerGrid() {
           onClick={() => handleClick(main.link)}
           style={{
             backgroundImage: main.image
-              ? `url(http://127.0.0.1:8000/storage/${main.image})`
+              ? `url(https://mblifestyle-backend-production.up.railway.app/storage/${main.image})`
               : 'linear-gradient(135deg, #cc0000, #660000)',
             cursor: main.link ? 'pointer' : 'default',
           }}
@@ -59,7 +59,7 @@ function BannerGrid() {
               onClick={() => handleClick(topRight.link)}
               style={{
                 backgroundImage: topRight.image
-                  ? `url(http://127.0.0.1:8000/storage/${topRight.image})`
+                  ? `url(https://mblifestyle-backend-production.up.railway.app/storage/${topRight.image})`
                   : 'linear-gradient(135deg, #111111, #333333)',
                 cursor: topRight.link ? 'pointer' : 'default',
               }}
@@ -80,7 +80,7 @@ function BannerGrid() {
               onClick={() => handleClick(bottomRight.link)}
               style={{
                 backgroundImage: bottomRight.image
-                  ? `url(http://127.0.0.1:8000/storage/${bottomRight.image})`
+                  ? `url(https://mblifestyle-backend-production.up.railway.app/storage/${bottomRight.image})`
                   : 'linear-gradient(135deg, #1e3a8a, #0a1f5c)',
                 cursor: bottomRight.link ? 'pointer' : 'default',
               }}

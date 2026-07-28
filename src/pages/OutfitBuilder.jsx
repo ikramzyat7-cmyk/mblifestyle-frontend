@@ -77,8 +77,8 @@ function OutfitBuilder() {
     const sel = selection[zone];
     if (!sel) return null;
     const colorData = sel.product.colors?.find((c) => c.hex === sel.color);
-    if (colorData?.image) return `http://127.0.0.1:8000/storage/${colorData.image}`;
-    if (sel.product.images?.[0]) return `http://127.0.0.1:8000/storage/${sel.product.images[0]}`;
+    if (colorData?.image) return `https://mblifestyle-backend-production.up.railway.app/storage/${colorData.image}`;
+    if (sel.product.images?.[0]) return `https://mblifestyle-backend-production.up.railway.app/storage/${sel.product.images[0]}`;
     return null;
   };
 
@@ -270,7 +270,7 @@ function OutfitBuilder() {
 
               {getProductsForZone(activeZone).map((product) => {
                 const imgUrl = product.images?.[0]
-                  ? `http://127.0.0.1:8000/storage/${product.images[0]}`
+                  ? `https://mblifestyle-backend-production.up.railway.app/storage/${product.images[0]}`
                   : 'https://via.placeholder.com/200x250/f5f5f5/999999?text=Image';
 
                 return (

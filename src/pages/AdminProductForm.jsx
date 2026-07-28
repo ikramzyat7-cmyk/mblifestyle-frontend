@@ -528,7 +528,7 @@ function AdminProductForm() {
                                 <div style={{ display: 'flex', gap: '6px', marginTop: '8px', flexWrap: 'wrap' }}>
                                   {c.images.map((img, idx) => (
                                     <img key={idx}
-                                      src={`http://127.0.0.1:8000/storage/${img}`}
+                                      src={`https://mblifestyle-backend-production.up.railway.app/storage/${img}`}
                                       alt={`color-img-${idx}`}
                                       style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e0e0e0' }}
                                     />
@@ -578,7 +578,7 @@ function AdminProductForm() {
                               {(provided, snapshot) => (
                                 <div className={`apf-image-thumb ${snapshot.isDragging ? 'dragging' : ''}`}
                                   ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                  <img src={`http://127.0.0.1:8000/storage/${img}`} alt={`img-${index}`} />
+                                  <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${img}`} alt={`img-${index}`} />
                                   <span className="apf-image-badge">{index === 0 ? 'Principal' : index + 1}</span>
                                 </div>
                               )}
