@@ -1,0 +1,46 @@
+/* ===== ANIMATIONS AU SCROLL ===== */
+.animate {
+    opacity: 0;
+    transition: all 0.7s ease;
+  }
+  
+  .animate.visible { opacity: 1; }
+  
+  /* Fade up */
+  .animate-up {
+    transform: translateY(40px);
+  }
+  .animate-up.visible {
+    transform: translateY(0);
+  }
+  
+  /* Fade left */
+  .animate-left {
+    transform: translateX(-40px);
+  }
+  .animate-left.visible {
+    transform: translateX(0);
+  }
+  
+  /* Fade right */
+  .animate-right {
+    transform: translateX(40px);
+  }
+  .animate-right.visible {
+    transform: translateX(0);
+  }
+  
+  /* Scale */
+  .animate-scale {
+    transform: scale(0.9);
+  }
+  .animate-scale.visible {
+    transform: scale(1);
+  }
+  
+  /* Délais */
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }

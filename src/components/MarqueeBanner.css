@@ -1,0 +1,47 @@
+.marquee-banner {
+  background-color: #111111;
+  padding: 10px 0;
+  overflow: hidden;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  animation: marqueeScroll 25s linear infinite;
+  width: max-content;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 32px;
+  white-space: nowrap;
+}
+.marquee-logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.marquee-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.marquee-separator {
+  color: rgba(255,255,255,0.3);
+  font-size: 14px;
+}

@@ -1,0 +1,120 @@
+.nf-page {
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nf-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+  
+  .nf-content {
+    text-align: center;
+    max-width: 500px;
+  }
+  
+  .nf-code {
+    font-size: 120px;
+    font-weight: 900;
+    color: #111111;
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  
+  .nf-code::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #cc0000;
+    border-radius: 2px;
+  }
+  
+  .nf-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #cc0000;
+    margin: 20px auto;
+    border-radius: 2px;
+  }
+  
+  .nf-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 12px;
+  }
+  
+  .nf-text {
+    font-size: 15px;
+    color: #888888;
+    line-height: 1.6;
+    margin: 0 0 36px;
+  }
+  
+  .nf-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  
+  .nf-btn-home {
+    padding: 12px 24px;
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .nf-btn-home:hover { background-color: #333333; }
+  
+  .nf-btn-catalogue {
+    padding: 12px 24px;
+    background-color: #cc0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .nf-btn-catalogue:hover { background-color: #990000; }
+  
+  .nf-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .nf-link {
+    font-size: 13px;
+    color: #888888;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  
+  .nf-link:hover { color: #cc0000; }

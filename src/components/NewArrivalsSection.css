@@ -1,0 +1,98 @@
+.nas-section-wrapper {
+    background-color: #f2f2f2 !important;
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    padding: 80px 0 !important;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .nas-section-wrapper .featured-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+    max-width: 100%;
+    padding: 0 60px;
+    margin-bottom: 40px;
+  }
+  
+  .nas-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .nas-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+  }
+  
+  .nas-section-wrapper .featured-products-title {
+    font-size: 36px;
+  }
+  
+  .nas-section-wrapper .featured-products-subtitle {
+    font-size: 13px;
+    color: #888888;
+  }
+  
+  .nas-btn-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    border: 1.5px solid #111111;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111111;
+    text-decoration: none;
+    background-color: #ffffff;
+    transition: all 0.2s;
+    white-space: nowrap;
+    margin-bottom: 8px;
+  }
+  
+  .nas-btn-all:hover {
+    background-color: #111111;
+    color: #ffffff;
+  }
+  
+  /* 5 cartes au lieu de 4 */
+  .nas-section-wrapper .featured-card-wrapper {
+    flex: 0 0 calc(20% - 20px);
+    min-width: 180px;
+  }
+  
+  .nas-section-wrapper .featured-products-carousel {
+    padding: 0 60px;
+  }
+  
+  @media (max-width: 1100px) {
+    .nas-section-wrapper .featured-card-wrapper {
+      flex: 0 0 calc(33% - 16px);
+      min-width: 180px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nas-section-wrapper .featured-products-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 0 20px;
+    }
+  
+    .nas-section-wrapper .featured-products-carousel {
+      padding: 0 20px;
+    }
+  
+    .nas-section-wrapper .featured-card-wrapper {
+      flex: 0 0 calc(50% - 12px);
+      min-width: 150px;
+    }
+  }

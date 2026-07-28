@@ -1,0 +1,157 @@
+/* ===== BOUTON PRINCIPAL ===== */
+.whatsapp-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  background-color: #25d366;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+  transition: all 0.3s;
+  animation: waPulse 2s infinite;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+  animation: none;
+}
+
+.wa-btn-text {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 4px 28px rgba(37,211,102,0.7); }
+}
+
+/* ===== POPUP ===== */
+.wa-popup {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  width: 300px;
+  overflow: hidden;
+  animation: waSlideIn 0.3s ease;
+}
+
+@keyframes waSlideIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.wa-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #ffffff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.wa-popup-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.wa-popup-header {
+  background: linear-gradient(135deg, #075e54, #128c7e);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wa-popup-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wa-popup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.wa-popup-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.wa-popup-status {
+  font-size: 11px;
+  color: #25d366;
+  font-weight: 600;
+}
+
+.wa-popup-body {
+  padding: 16px;
+  background-color: #e5ddd5;
+}
+
+.wa-popup-message {
+  background-color: #ffffff;
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 8px;
+  font-size: 13px;
+  color: #111111;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.wa-popup-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  border-width: 0 8px 8px 0;
+  border-style: solid;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.wa-popup-btn {
+  display: block;
+  background-color: #25d366;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+
+.wa-popup-btn:hover {
+  background-color: #1da851;
+}

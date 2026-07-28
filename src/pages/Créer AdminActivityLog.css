@@ -1,0 +1,120 @@
+.al-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .al-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .al-item {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 14px;
+    align-items: flex-start;
+    background-color: var(--admin-card-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: box-shadow 0.15s;
+  }
+  
+  .al-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  
+  .al-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  
+  .al-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  
+  .al-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .al-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  
+  .al-model {
+    font-size: 11px;
+    color: var(--admin-text-secondary);
+    background-color: var(--admin-bg);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  
+  .al-description {
+    font-size: 13px;
+    color: var(--admin-text);
+    line-height: 1.5;
+  }
+  
+  .al-changes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .al-change-tag {
+    font-size: 11px;
+    background-color: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--admin-text-secondary);
+  }
+  
+  .al-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  
+  .al-admin {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--admin-text);
+  }
+  
+  .al-date {
+    font-size: 11px;
+    color: var(--admin-text-secondary);
+    white-space: nowrap;
+  }
+  
+  .al-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }

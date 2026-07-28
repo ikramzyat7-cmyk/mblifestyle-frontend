@@ -1,0 +1,208 @@
+@import url('./Admin.css');
+
+.ac-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ac-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.ac-field input {
+  padding: 10px 14px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.ac-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #333333;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.ac-subcategories {
+  background-color: #f9f9f9;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ac-subcategories label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.ac-sub-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.ac-sub-input-row input {
+  flex: 1;
+  padding: 9px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.ac-btn-add-sub {
+  padding: 9px 16px;
+  background-color: #111111;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ac-btn-add-sub:hover {
+  background-color: #1e3a8a;
+}
+
+.ac-sub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ac-sub-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ac-sub-tag button {
+  background: none;
+  border: none;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-size: 11px;
+  padding: 0;
+}
+
+.ac-sub-tag button:hover {
+  color: #ffffff;
+}
+
+.ac-sub-hint {
+  font-size: 12px;
+  color: #999999;
+  font-style: italic;
+}
+
+.ac-table-subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ac-table-sub-tag {
+  background-color: #f0f4ff;
+  color: #1e3a8a;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.ac-visibility {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .ac-visibility-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+  
+  .ac-visibility-btn.visible {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .ac-visibility-btn.visible:hover {
+    background-color: #ffebee;
+    color: #e74c3c;
+  }
+  
+  .ac-visibility-btn.hidden {
+    background-color: #ffebee;
+    color: #e74c3c;
+  }
+  
+  .ac-visibility-btn.hidden:hover {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .ac-sub-visibility {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .ac-sub-visibility-btn {
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: none;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .ac-sub-visibility-btn.visible {
+    background-color: #f0f4ff;
+    color: #1e3a8a;
+  }
+  
+  .ac-sub-visibility-btn.visible:hover {
+    background-color: #ffebee;
+    color: #e74c3c;
+  }
+  
+  .ac-sub-visibility-btn.hidden {
+    background-color: #f5f5f5;
+    color: #999999;
+    text-decoration: line-through;
+  }
+  
+  .ac-sub-visibility-btn.hidden:hover {
+    background-color: #f0f4ff;
+    color: #1e3a8a;
+    text-decoration: none;
+  }

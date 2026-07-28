@@ -1,0 +1,42 @@
+.stats-counter {
+    background-color: #111111;
+    padding: 60px 40px;
+  }
+  
+  .stats-counter-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+  
+  .stat-label {
+    font-size: 13px;
+    color: #aaaaaa;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 900px) {
+    .stats-counter-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-counter-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }

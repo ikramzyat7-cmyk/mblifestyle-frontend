@@ -1,0 +1,238 @@
+.admin-sidebar {
+  width: 240px;
+  background-color: #111111;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.admin-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 28px;
+}
+
+.admin-sidebar-logo img {
+  height: 30px;
+}
+
+.admin-sidebar-logo span {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.admin-sidebar-section {
+  margin-bottom: 24px;
+}
+
+.admin-sidebar-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #555555;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #aaaaaa;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-sidebar-link:hover {
+  background-color: #1d1d1d;
+  color: #ffffff;
+}
+
+.admin-sidebar-link.active {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+.admin-sidebar-expandable {
+  justify-content: flex-start;
+}
+
+.admin-sidebar-chevron {
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+.admin-sidebar-chevron.open {
+  transform: rotate(180deg);
+}
+
+.admin-sidebar-submenu {
+  margin-top: 4px;
+  margin-left: 14px;
+  border-left: 1px solid #2a2a2a;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-sidebar-sublink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #888888;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-sidebar-sublink:hover {
+  background-color: #1d1d1d;
+  color: #ffffff;
+}
+
+.admin-sidebar-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #555555;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-count {
+  margin-left: auto;
+  background-color: #c0392b;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.admin-sidebar-bottom {
+  margin-top: auto;
+}
+
+.admin-sidebar-logout {
+  color: #aaaaaa;
+}
+
+.admin-sidebar-logout:hover {
+  background-color: #2a1414;
+  color: #ff6b6b;
+}
+.admin-sidebar-submenu-divider {
+  height: 1px;
+  background-color: #2a2a2a;
+  margin: 6px 0;
+}
+.admin-sidebar-sublink.active {
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.admin-sidebar-sublink.active .admin-sidebar-dot {
+  background-color: #ffffff;
+}
+/* Dark mode support */
+.admin-dark .admin-sidebar {
+  background-color: var(--admin-sidebar-bg);
+  border-right: 1px solid #1a1a1a;
+}
+.admin-theme-toggle {
+  color: #aaaaaa;
+  margin-bottom: 4px;
+}
+
+.admin-theme-toggle:hover {
+  background-color: #1d1d1d;
+  color: #ffffff;
+}
+.admin-sidebar-subsubmenu {
+  margin-left: 12px;
+  border-left: 1px solid #2a2a2a;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.admin-sidebar-subsublink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #666666;
+  font-size: 12px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.admin-sidebar-subsublink:hover {
+  background-color: #1d1d1d;
+  color: #ffffff;
+}
+
+.admin-sidebar-subsublink.active {
+  color: #ffffff;
+  background-color: #2a2a2a;
+}
+
+.admin-sidebar-subdot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #444444;
+  flex-shrink: 0;
+}
+.admin-orders-badge {
+  margin-left: auto;
+  background-color: #e74c3c;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0);
+  }
+}

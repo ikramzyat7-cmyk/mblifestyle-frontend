@@ -1,0 +1,151 @@
+.category-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border-top: 3px solid #000000;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border-radius: 0 0 8px 8px;
+  padding: 24px;
+  z-index: 1000;
+  min-width: 600px;
+  animation: menuFadeIn 0.2s ease;
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.category-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.category-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.category-menu-item:hover {
+  background-color: #fff5f5;
+  border-color: #141414;
+  transform: translateY(-2px);
+}
+
+.category-menu-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e0e0e0;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.category-menu-item:hover .category-menu-image {
+  border-color: #0f0f0f;
+}
+
+.category-menu-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.category-menu-item:hover .category-menu-image img {
+  transform: scale(1.1);
+}
+
+.category-menu-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cccccc;
+}
+
+.category-menu-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111111;
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.category-menu-item:hover .category-menu-name {
+  color: #0e0d0d;
+}
+
+/* Bouton voir tout */
+.category-menu-more .category-menu-image {
+  background-color: #111111;
+  border-color: #111111;
+}
+
+.category-menu-more:hover .category-menu-image {
+  background-color: #111111;
+  border-color: #0a0a0a;
+}
+
+.category-menu-more-icon {
+  color: #ffffff;
+}
+
+.category-menu-footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: center;
+}
+
+.category-menu-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #cc0000;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 2px solid #cc0000;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category-menu-all-btn:hover {
+  background-color: #cc0000;
+  color: #ffffff;
+}
+/* Pont invisible pour éviter la disparition */
+.category-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: transparent;
+}

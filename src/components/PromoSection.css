@@ -1,0 +1,272 @@
+.promo-section {
+    background: linear-gradient(135deg, #111111 0%, #1e3a8a 100%);
+    padding: 70px 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .promo-section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  
+  .promo-section-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .promo-section-tab {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .promo-section-tab:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+  }
+  
+  .promo-section-tab.active {
+    background-color: #ffffff;
+    color: #111111;
+    border-color: #ffffff;
+  }
+  
+  .promo-section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .promo-section-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+    max-height: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+  }
+  
+  .promo-section-image:hover {
+    transform: scale(1.02);
+  }
+  
+  .promo-section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .promo-section-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .promo-section-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+  
+  .promo-section-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .promo-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e74c3c;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+  }
+  
+  .promo-section-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 38px;
+    font-weight: 400;
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+  }
+  
+  .promo-section-subtitle {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .promo-section-divider {
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+  
+  .promo-section-brand {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  
+  .promo-section-product-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .promo-section-product-name:hover {
+    opacity: 0.8;
+  }
+  
+  .promo-section-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .promo-section-price-old {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: line-through;
+  }
+  
+  .promo-section-price-new {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  .promo-section-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .promo-section-btn-cart {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background-color: #ffffff;
+    color: #111111;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .promo-section-btn-cart:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-1px);
+  }
+  
+  .promo-section-btn-cart.added {
+    background-color: #2e7d32;
+    color: #ffffff;
+  }
+  
+  .promo-section-btn-detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .promo-section-btn-detail:hover {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .promo-section-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+  }
+  
+  .promo-section-arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  
+  .promo-section-arrow:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+  }
+  
+  .promo-section-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 900px) {
+    .promo-section-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .promo-section-image {
+      max-height: 350px;
+      aspect-ratio: 16/9;
+    }
+    .promo-section-title {
+      font-size: 28px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .promo-section-inner {
+      padding: 0 20px;
+    }
+    .promo-section-price-new {
+      font-size: 22px;
+    }
+  }

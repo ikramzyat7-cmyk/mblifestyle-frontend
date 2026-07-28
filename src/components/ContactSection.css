@@ -1,0 +1,85 @@
+.contact-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-icon {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+  }
+  
+  .contact-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: #111111;
+    margin-bottom: 14px;
+  }
+  
+  .contact-text {
+    font-size: 14px;
+    color: #888888;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  
+  .contact-options {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 26px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  
+  .contact-btn:hover {
+    transform: translateY(-1px);
+  }
+  
+  .contact-btn-email {
+    background-color: #111111;
+    color: #ffffff;
+  }
+  
+  .contact-btn-email:hover {
+    background-color: #1e3a8a;
+  }
+  
+  .contact-btn-whatsapp {
+    background-color: #25d366;
+    color: #ffffff;
+  }
+  
+  .contact-btn-whatsapp:hover {
+    background-color: #1ebc59;
+  }
+  
+  @media (max-width: 600px) {
+    .contact-section {
+      padding: 50px 20px;
+    }
+    .contact-options {
+      flex-direction: column;
+      width: 100%;
+    }
+    .contact-btn {
+      justify-content: center;
+    }
+  }

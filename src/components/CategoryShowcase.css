@@ -1,0 +1,116 @@
+.category-showcase {
+  background-color: var(--white);
+  padding: 32px 0;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.category-showcase-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.category-showcase-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.category-showcase-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+.category-showcase-header p {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 8px;
+}
+
+.category-showcase-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.category-showcase-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: calc(12.5% - 11px);
+  min-width: 100px;
+}
+
+.category-showcase-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--gray-bg);
+  border: 2px solid var(--gray-border);
+  transition: border-color 0.2s;
+}
+
+.category-showcase-item:hover .category-showcase-image {
+  border-color: var(--primary);
+}
+
+.category-showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.category-showcase-item:hover .category-showcase-image img {
+  transform: scale(1.08);
+}
+
+.category-showcase-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-light);
+}
+
+.category-showcase-overlay {
+  display: none;
+}
+
+.category-showcase-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark);
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+.category-showcase-item:hover .category-showcase-name {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .category-showcase-item {
+    width: calc(25% - 9px);
+    min-width: 70px;
+  }
+}
