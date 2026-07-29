@@ -23,27 +23,52 @@ const availableColors = [
 const sizesByCategory = {
   'T-shirt':    ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
   'T-shirts':   ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
+  't-shirt':    ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
+  't-shirts':   ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'],
   'Pantalon':   ['34', '36', '38', '40', '42', '44', '46', '48'],
   'Pantalons':  ['34', '36', '38', '40', '42', '44', '46', '48'],
+  'pantalon':   ['34', '36', '38', '40', '42', '44', '46', '48'],
+  'pantalons':  ['34', '36', '38', '40', '42', '44', '46', '48'],
   'Robe':       ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Robes':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'robe':       ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'robes':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Chemise':    ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Chemises':   ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'chemise':    ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'chemises':   ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Veste':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Vestes':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'veste':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'vestes':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Sweat':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Sweats':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'sweat':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'sweats':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Short':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Shorts':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'short':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'shorts':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Chaussure':  ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46'],
   'Chaussures': ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46'],
+  'chaussure':  ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46'],
+  'chaussures': ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46'],
   'Accessoire': ['Taille unique', 'S/M', 'L/XL'],
   'Accessoires':['Taille unique', 'S/M', 'L/XL'],
+  'accessoire': ['Taille unique', 'S/M', 'L/XL'],
+  'accessoires':['Taille unique', 'S/M', 'L/XL'],
   'Ensemble':   ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Ensembles':  ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'ensemble':   ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'ensembles':  ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'Pull':       ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'Pulls':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Pull':       ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Pulls':      ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   'Jacket':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'Jackets':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'jacket':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+  'jackets':     ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
 };
 
 const specsByCategory = {
@@ -168,7 +193,11 @@ function AdminProductForm() {
   const selectedCategory = categories.find((c) => c.name === form.category);
   const subcategoryOptions = selectedCategory?.subcategories || [];
   const currentSpecs = specsByCategory[form.category] || [];
-  const currentSizes = sizesByCategory[form.category] || [];
+  const currentSizes = sizesByCategory[form.category] || 
+  sizesByCategory[form.category?.toLowerCase()] ||
+  Object.entries(sizesByCategory).find(([key]) => 
+    key.toLowerCase() === form.category?.toLowerCase()
+  )?.[1] || [];
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
