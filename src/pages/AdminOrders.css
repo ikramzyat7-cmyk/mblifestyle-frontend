@@ -456,3 +456,13 @@
 .order-card-delivered {
   border-left: 4px solid #2e7d32 !important;
 }
+.order-code-badge {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  font-family: monospace;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}

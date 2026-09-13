@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
+import TrackOrder from './pages/TrackOrder'; 
 import ProtectedRoute from './components/ProtectedRoute';
 import CategoryPage from './pages/CategoryPage';
 import SearchResults from './pages/SearchResults';
@@ -36,9 +37,15 @@ import Welcome from './pages/Welcome';
 import CookieBanner from './components/CookieBanner';
 import CGV from './pages/CGV';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
+import Wishlist from './pages/Wishlist';
+import { WishlistProvider } from './context/WishlistContext';
+
+
+
 
 function App() {
   return (
+    <WishlistProvider>
     <CartProvider>
       <CookieBanner />
       <BrowserRouter>
@@ -48,6 +55,7 @@ function App() {
           <Route path="/mb-gestion-2026" element={<Login />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/panier" element={<Cart />} />
+          <Route path="/suivre-commande" element={<TrackOrder />} />
           <Route path="/produit/:id" element={<ProductDetail />} />
           <Route path="/categorie/:slug" element={<CategoryPage />} />
           <Route path="/recherche" element={<SearchResults />} />
@@ -58,6 +66,7 @@ function App() {
           <Route path="/categories" element={<AllCategories />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/cgv" element={<CGV />} />
+          <Route path="/favoris" element={<Wishlist />} />
 <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
           {/* Routes admin — toutes enveloppées dans ThemeProvider */}
           <Route path="/admin/*" element={
@@ -145,7 +154,8 @@ function App() {
           } />
         </Routes>
       </BrowserRouter>
-    </CartProvider>
+          </CartProvider>
+    </WishlistProvider>
   );
 }
 

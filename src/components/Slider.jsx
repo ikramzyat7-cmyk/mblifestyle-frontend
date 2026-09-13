@@ -29,7 +29,7 @@ function Slider() {
 
   const slide = slides[current];
   const imageUrl = slide.image
-    ? `https://mblifestyle-backend-production.up.railway.app/storage/${slide.image}`
+    ? `http://127.0.0.1:8000/storage/${slide.image}`
     : 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80';
 
   return (
@@ -40,7 +40,7 @@ function Slider() {
           className={`slider-slide ${i === current ? 'active' : ''}`}
           style={{
             backgroundImage: `url(${s.image
-              ? `https://mblifestyle-backend-production.up.railway.app/storage/${s.image}`
+              ? `http://127.0.0.1:8000/storage/${s.image}`
               : 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'
             })`,
           }}

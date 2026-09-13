@@ -143,7 +143,7 @@ function CategoryPage() {
       {/* Hero */}
       <div className="category-hero"
         style={categoryData?.image ? {
-          backgroundImage: `url(https://mblifestyle-backend-production.up.railway.app/storage/${categoryData.image})`,
+          backgroundImage: `url(http://127.0.0.1:8000/storage/${categoryData.image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         } : {}}>

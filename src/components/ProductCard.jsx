@@ -2,9 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
+import { useWishlist } from '../context/WishlistContext';
+
+
 
 function ProductCard({ product }) {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const inWishlist = isInWishlist(product.id);
   const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
@@ -15,15 +20,15 @@ function ProductCard({ product }) {
 
   const images = product.images || [];
   const defaultImage = images[0]
-    ? `https://mblifestyle-backend-production.up.railway.app/storage/${images[0]}`
+    ? `http://127.0.0.1:8000/storage/${images[0]}`
     : null;
   const hoverImage = images[1]
-    ? `https://mblifestyle-backend-production.up.railway.app/storage/${images[1]}`
+    ? `http://127.0.0.1:8000/storage/${images[1]}`
     : defaultImage;
 
   const selectedColorData = product.colors?.find((c) => c.hex === selectedColor);
   const frontImage = selectedColorData?.image
-    ? `https://mblifestyle-backend-production.up.railway.app/storage/${selectedColorData.image}`
+    ? `http://127.0.0.1:8000/storage/${selectedColorData.image}`
     : defaultImage;
 
   const hasColors = product.colors && product.colors.length > 0;
@@ -114,7 +119,19 @@ function ProductCard({ product }) {
             </svg>
           </div>
         )}
-
+        {/* Bouton Wishlist */}
+        <button
+          className={`pc-wishlist-btn ${inWishlist ? 'active' : ''}`}
+          onClick={(e) => { e.stopPropagation(); toggleWishlist(product); }}
+          title={inWishlist ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18"
+            fill={inWishlist ? '#e53935' : 'none'}
+            stroke={inWishlist ? '#e53935' : 'currentColor'}
+            strokeWidth="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </button>
         {product.discount > 0 && (
           <span className="pc-badge-discount">-{product.discount}%</span>
         )}

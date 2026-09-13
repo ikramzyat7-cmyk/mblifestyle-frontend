@@ -58,7 +58,7 @@ function AllCategories() {
               <Link key={cat.id} to={`/categorie/${cat.slug}`} className="ac-card">
                 <div className="ac-card-img">
                   {cat.image ? (
-                    <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${cat.image}`} alt={cat.name} />
+                    <img src={`http://127.0.0.1:8000/storage/${cat.image}`} alt={cat.name} />
                   ) : (
                     <div className="ac-card-placeholder">
                       <svg viewBox="0 0 24 24" fill="none" stroke="#cccccc" width="40" height="40">

@@ -6,7 +6,7 @@ import api from '../api/axios';
 import logo from '../assets/logo.png';
 import './Header.css';
 import CategoryMenu from './CategoryMenu';
-
+import { useWishlist } from '../context/WishlistContext';
 
 function Header({ searchTerm, onSearchChange, forceWhite }) {
   const [openMenu, setOpenMenu] = useState(false);
@@ -17,7 +17,7 @@ function Header({ searchTerm, onSearchChange, forceWhite }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-
+  const { wishlistItems } = useWishlist();
   const shopName = settings.shop_name || 'MBLIFESTYLE';
   const isActive = (path) => location.pathname === path;
 
@@ -111,7 +111,14 @@ function Header({ searchTerm, onSearchChange, forceWhite }) {
                 {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
               </div>
             </Link>
-
+            <Link to="/favoris" className="icon-btn header-wishlist-link" title="Mes favoris">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" strokeWidth="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              {wishlistItems.length > 0 && (
+                <span className="header-wishlist-badge">{wishlistItems.length}</span>
+              )}
+            </Link>
             {/* Instagram */}
             <a
               href={settings.instagram_url || 'https://instagram.com'}

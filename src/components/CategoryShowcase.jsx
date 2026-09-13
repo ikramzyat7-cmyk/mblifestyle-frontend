@@ -31,7 +31,7 @@ function CategoryShowcase() {
             <div className="category-showcase-image">
               {cat.image ? (
                 <img
-                  src={`https://mblifestyle-backend-production.up.railway.app/storage/${cat.image}`}
+                  src={`http://127.0.0.1:8000/storage/${cat.image}`}
                   alt={cat.name}
                 />
               ) : (

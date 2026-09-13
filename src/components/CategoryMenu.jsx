@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import './CategoryMenu.css';
+import { storageUrl } from '../api/config';
+
+
 
 function CategoryMenu() {
   const [categories, setCategories] = useState([]);
@@ -26,7 +29,7 @@ function CategoryMenu() {
             <div className="category-menu-image">
               {cat.image ? (
                 <img
-                  src={`https://mblifestyle-backend-production.up.railway.app/storage/${cat.image}`}
+                  src={storageUrl(cat.image)}
                   alt={cat.name}
                 />
               ) : (

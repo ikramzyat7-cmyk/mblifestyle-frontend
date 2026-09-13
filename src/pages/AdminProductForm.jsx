@@ -193,11 +193,15 @@ function AdminProductForm() {
   const selectedCategory = categories.find((c) => c.name === form.category);
   const subcategoryOptions = selectedCategory?.subcategories || [];
   const currentSpecs = specsByCategory[form.category] || [];
-  const currentSizes = sizesByCategory[form.category] || 
-  sizesByCategory[form.category?.toLowerCase()] ||
-  Object.entries(sizesByCategory).find(([key]) => 
-    key.toLowerCase() === form.category?.toLowerCase()
-  )?.[1] || [];
+  const normalizeKey = (str) =>
+  str?.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+const normalizedSizesByCategory = Object.entries(sizesByCategory).reduce((acc, [key, val]) => {
+  acc[normalizeKey(key)] = val;
+  return acc;
+}, {});
+
+const currentSizes = normalizedSizesByCategory[normalizeKey(form.category)] || [];
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -557,7 +561,7 @@ function AdminProductForm() {
                                 <div style={{ display: 'flex', gap: '6px', marginTop: '8px', flexWrap: 'wrap' }}>
                                   {c.images.map((img, idx) => (
                                     <img key={idx}
-                                      src={`https://mblifestyle-backend-production.up.railway.app/storage/${img}`}
+                                      src={`http://127.0.0.1:8000/storage/${img}`}
                                       alt={`color-img-${idx}`}
                                       style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e0e0e0' }}
                                     />
@@ -607,7 +611,7 @@ function AdminProductForm() {
                               {(provided, snapshot) => (
                                 <div className={`apf-image-thumb ${snapshot.isDragging ? 'dragging' : ''}`}
                                   ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                  <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${img}`} alt={`img-${index}`} />
+                                  <img src={`http://127.0.0.1:8000/storage/${img}`} alt={`img-${index}`} />
                                   <span className="apf-image-badge">{index === 0 ? 'Principal' : index + 1}</span>
                                 </div>
                               )}

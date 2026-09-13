@@ -1,0 +1,233 @@
+.track-page {
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.track-hero {
+  padding: 48px 24px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.track-breadcrumb {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.track-breadcrumb a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.track-breadcrumb a:hover {
+  color: #111827;
+}
+
+.track-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.5px;
+}
+
+.track-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* ===== Form ===== */
+.track-form {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.track-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.track-form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.track-form-row input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.track-form-row input:focus {
+  border-color: #111827;
+  box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
+}
+
+.track-form-row button {
+  padding: 14px 28px;
+  background: #111827;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.track-form-row button:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.track-form-row button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.track-form-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.track-error {
+  color: #dc2626;
+  margin-top: 12px;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ===== Result card ===== */
+.track-result {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.03);
+  animation: trackFadeIn 0.35s ease;
+}
+
+@keyframes trackFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.track-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.track-result-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.track-result-code {
+  font-family: 'SF Mono', 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: 0.5px;
+}
+
+.track-status {
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: #f3f4f6;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.track-status-delivered { background: #dcfce7; color: #166534; }
+.track-status-confirmed { background: #dbeafe; color: #1e40af; }
+.track-status-cancelled { background: #fee2e2; color: #991b1b; }
+.track-status-pending { background: #fef3c7; color: #92400e; }
+
+.track-result-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-bottom: 20px;
+  background: #f9fafb;
+  padding: 14px 16px;
+  border-radius: 10px;
+}
+
+.track-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.track-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.track-item-name {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 3px;
+}
+
+.track-item-variant {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.track-item-price {
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.track-summary-rows {
+  margin-bottom: 12px;
+}
+
+.track-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.92rem;
+  color: #6b7280;
+}
+
+.track-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111827;
+  padding-top: 16px;
+  border-top: 1.5px solid #111827;
+}

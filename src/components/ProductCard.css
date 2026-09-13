@@ -377,13 +377,45 @@
 .pc-badge-new {
   position: absolute;
   top: 10px;
-  right: 10px;
-  background-color: #111111;
+  left: 10px;
+  background: #111111;
   color: #ffffff;
   font-size: 10px;
   font-weight: 700;
   padding: 3px 8px;
-  border-radius: 20px;
+  border-radius: 999px;
   letter-spacing: 0.5px;
+}
+.pc-wishlist-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  top: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   z-index: 2;
+  color: #555555;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform .15s, background .15s;
+}
+
+.pc-wishlist-btn:hover {
+  transform: scale(1.1);
+  background: #fff;
+  color: #e53935;
+}
+
+.pc-wishlist-btn.active {
+  color: #e53935;
+}
+
+.pc-wishlist-btn svg {
+  stroke: currentColor;
 }

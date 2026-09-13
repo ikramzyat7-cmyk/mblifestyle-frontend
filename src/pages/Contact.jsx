@@ -1,26 +1,46 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import { useSettings } from '../hooks/useSettings';
 import './Contact.css';
 
+const EMAILJS_SERVICE_ID  = 'service_hn7jefj';
+const EMAILJS_TEMPLATE_ID = 'template_c3og5z8';
+const EMAILJS_PUBLIC_KEY  = 'Hovb6D9-b_WI2Vmt6';
+
 function Contact() {
   const settings = useSettings();
   const whatsappNumber = settings.whatsapp_number || '212786972636';
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let text = `Bonjour, je vous contacte via le site :\n\n`;
-    text += `Nom : ${form.name}\n`;
-    text += `Email : ${form.email}\n`;
-    if (form.phone) text += `Téléphone : ${form.phone}\n`;
-    text += `\nMessage : ${form.message}`;
-    const link = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-    window.open(link, '_blank');
+    setStatus('sending');
+
+    emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        from_name:  form.name,
+        from_email: form.email,
+        phone:      form.phone || 'Non renseigné',
+        message:    form.message,
+      },
+      EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setStatus('success');
+      setForm({ name: '', email: '', phone: '', message: '' });
+    })
+    .catch((err) => {
+      console.error('EmailJS error:', err);
+      setStatus('error');
+    });
   };
 
   return (
@@ -36,35 +56,75 @@ function Contact() {
 
       <div className="contact-content">
 
-        {/* Formulaire */}
         <div className="contact-form-section">
           <h2>Écrivez-nous</h2>
+
+          {status === 'success' && (
+            <div className="contact-alert contact-alert-success">
+              ✅ Message envoyé ! On vous répond très vite.
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="contact-alert contact-alert-error">
+              ❌ Erreur lors de l'envoi. Contactez-nous sur WhatsApp.
+            </div>
+          )}
+
           <form className="contact-form" onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Votre nom" value={form.name} onChange={handleChange} />
-            <input type="email" name="email" placeholder="Votre email *" value={form.email} onChange={handleChange} required />
-            <input type="tel" name="phone" placeholder="Numéro de téléphone" value={form.phone} onChange={handleChange} />
-            <textarea name="message" placeholder="Votre message..." value={form.message} onChange={handleChange} required />
-            <button type="submit" className="contact-submit-btn">
+            <input
+              type="text"
+              name="name"
+              placeholder="Votre nom"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Votre email *"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Numéro de téléphone"
+              value={form.phone}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Votre message..."
+              value={form.message}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="submit"
+              className="contact-submit-btn"
+              disabled={status === 'sending'}
+            >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18" strokeWidth="2">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
               </svg>
-              Envoyer le message
+              {status === 'sending' ? 'Envoi en cours...' : 'Envoyer le message'}
             </button>
           </form>
         </div>
 
-        {/* Info */}
         <div className="contact-info-section">
-
           <div className="contact-info-block">
             <h3>Notre contact</h3>
-            <a href={`mailto:${settings.email || 'contact@mblifestyle.com'}`} className="contact-info-row">
+            <a href="mailto:ikram.zyat7@gmail.com" className="contact-info-row">
               <span className="contact-info-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" strokeWidth="2">
                   <path d="M4 4h16v16H4V4z"/><path d="M4 6l8 7 8-7"/>
                 </svg>
               </span>
-              {settings.email || 'contact@mblifestyle.com'}
+              ikram.zyat7@gmail.com
             </a>
             <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="contact-info-row">
               <span className="contact-info-icon">
@@ -78,7 +138,8 @@ function Contact() {
               <div className="contact-info-row">
                 <span className="contact-info-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" strokeWidth="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
                   </svg>
                 </span>
                 {settings.address}
@@ -88,7 +149,8 @@ function Contact() {
               <div className="contact-info-row">
                 <span className="contact-info-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
                   </svg>
                 </span>
                 {settings.working_hours}
@@ -98,7 +160,7 @@ function Contact() {
 
           <div className="contact-info-block">
             <h3>Suivez-nous</h3>
-            <a href={settings.instagram_url || 'https://instagram.com'} target="_blank" rel="noopener noreferrer" className="contact-info-row">
+            <a href={settings.instagram_url || 'https://instagram.com/mblifestyle.ma'} target="_blank" rel="noopener noreferrer" className="contact-info-row">
               <span className="contact-info-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" strokeWidth="2">
                   <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -106,10 +168,9 @@ function Contact() {
                   <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                 </svg>
               </span>
-              Instagram
+              Instagram — mblifestyle.ma
             </a>
           </div>
-
         </div>
       </div>
 

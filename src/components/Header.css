@@ -320,3 +320,32 @@
   filter: brightness(0) invert(1);
   opacity: 0.9;
 }
+.header-wishlist-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+.header-wishlist-link:hover {
+  color: #cc0000;
+}
+
+.header-scrolled .header-wishlist-link {
+  color: #111111;
+  filter: none;
+}
+
+.header-scrolled .header-wishlist-link:hover {
+  color: #cc0000;
+}
+.header-wishlist-badge {
+  position: absolute; top: -6px; right: -8px;
+  background: #e53935; color: #fff; font-size: 10px;
+  font-weight: 700; width: 18px; height: 18px;
+  border-radius: 50%; display: flex;
+  align-items: center; justify-content: center;
+}

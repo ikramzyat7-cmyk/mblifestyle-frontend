@@ -227,8 +227,11 @@ function AdminOrders() {
               <div key={order.id} className={`order-card order-card-${order.status} ${order.is_delivered ? 'order-card-delivered' : ''}`}>
                 <div className="order-card-header">
                   <div className="order-card-id">
-                    <span>Commande #{order.id}</span>
-                    <span className={`order-status-badge ${order.status}`}>
+                      <span>Commande #{order.id}</span>
+                      {order.order_code && (
+                        <span className="order-code-badge">{order.order_code}</span>
+                      )}
+                      <span className={`order-status-badge ${order.status}`}>
                       {order.status === 'pending' ? '⏳ En attente'
                         : order.status === 'confirmed' ? '✓ Confirmée'
                         : '✕ Annulée'}

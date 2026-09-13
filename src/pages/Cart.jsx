@@ -27,6 +27,7 @@ function Cart() {
   });
   const [errors, setErrors] = useState({});
   const [orderSent, setOrderSent] = useState(false);
+  const [orderCode, setOrderCode] = useState(null);
   const [suggested, setSuggested] = useState([]);
   const [citySearch, setCitySearch] = useState('');
 const [showCityList, setShowCityList] = useState(false);
@@ -72,25 +73,33 @@ const [showCityList, setShowCityList] = useState(false);
   const handleOrderOnWhatsApp = async () => {
     if (!validateForm()) return;
 
+    let newOrderCode = null; // 👈 variable locale
+
     try {
-      await api.post('/orders', {
-        customer_name: `${customer.firstName} ${customer.lastName}`,
-        customer_phone: customer.phone,
-        customer_address: customer.address,
-        items: cartItems.map((item) => ({
-          product_id: item.product.id,
-          product_name: item.product.name,
-          color: item.color,
-          size: item.size,
-          quantity: item.quantity,
-          price: item.product.discount > 0
+        const res = await api.post('/orders', {
+    customer_name: `${customer.firstName} ${customer.lastName}`,
+    customer_phone: customer.phone,
+    customer_address: customer.address,
+    delivery_city: selectedCity?.name || null,
+    delivery_price: deliveryPrice,
+    items: cartItems.map((item) => ({
+        product_id: item.product.id,
+        product_name: item.product.name,
+        color: item.color,
+        size: item.size,
+        quantity: item.quantity,
+        price: item.product.discount > 0
             ? (item.product.price - item.product.price * item.product.discount / 100).toFixed(2)
             : item.product.price,
-        })),
-        total: discountedTotal,
-      });
+    })),
+    total: discountedTotal + deliveryPrice,
+});
+
+        newOrderCode = res.data.order_code; // 👈 on stocke dans la variable locale
+        setOrderCode(newOrderCode); // on garde aussi le state si utilisé ailleurs dans l'UI
     } catch (err) {
-      console.error('Erreur commande:', err);
+        console.error('Erreur commande:', err);
+        return;
     }
 
     let message = '🛍️ *Nouvelle commande MBLifestyle*\n\n';
@@ -98,33 +107,37 @@ const [showCityList, setShowCityList] = useState(false);
     message += `📞 *Téléphone :* ${customer.phone}\n`;
     message += `📍 *Adresse :* ${customer.address}\n`;
     if (customer.note) message += `📝 *Note :* ${customer.note}\n`;
+    message += `\n🔑 *Votre code de suivi : ${newOrderCode}*\n`; // 👈 on utilise la variable locale, pas le state
+
     message += '\n*─── Articles ───*\n';
 
     cartItems.forEach((item, index) => {
-      const price = item.product.discount > 0
-        ? (item.product.price - item.product.price * item.product.discount / 100).toFixed(2)
-        : item.product.price;
-      message += `\n${index + 1}. *${item.product.name}*`;
-      if (item.product.brand) message += ` (${item.product.brand})`;
-      if (item.color) message += `\n   🎨 Couleur: ${colorNames[item.color] || item.color}`;
-      if (item.size) message += `\n   📏 Taille: ${item.size}`;
-      message += `\n   📦 Quantité: ${item.quantity}`;
-      message += `\n   💰 Prix: ${price} DH`;
+        const price = item.product.discount > 0
+            ? (item.product.price - item.product.price * item.product.discount / 100).toFixed(2)
+            : item.product.price;
+        message += `\n${index + 1}. *${item.product.name}*`;
+        if (item.product.brand) message += ` (${item.product.brand})`;
+        if (item.color) message += `\n   🎨 Couleur: ${colorNames[item.color] || item.color}`;
+        if (item.size) message += `\n   📏 Taille: ${item.size}`;
+        message += `\n   📦 Quantité: ${item.quantity}`;
+        message += `\n   💰 Prix: ${price} DH`;
     });
 
-    message += `\n\n*─────────────*`;
-    message += `\n💵 *Total : ${discountedTotal.toFixed(2)} DH*`;
+     message += `\n\n*─────────────*`;
+    message += `\n📦 *Sous-total : ${discountedTotal.toFixed(2)} DH*`;
+    message += `\n🚚 *Livraison (${selectedCity?.name || '-'}) : ${deliveryPrice === 0 ? 'Gratuite' : deliveryPrice.toFixed(2) + ' DH'}*`;
+    message += `\n💵 *Total : ${(discountedTotal + deliveryPrice).toFixed(2)} DH*`;
 
     const link = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(link, '_blank');
     setOrderSent(true);
     clearCart();
-  };
+};
 
   const getItemImage = (item) => {
     const colorData = item.product.colors?.find((c) => c.hex === item.color);
-    if (colorData?.images?.length > 0) return `https://mblifestyle-backend-production.up.railway.app/storage/${colorData.images[0]}`;
-    if (item.product.images?.[0]) return `https://mblifestyle-backend-production.up.railway.app/storage/${item.product.images[0]}`;
+    if (colorData?.images?.length > 0) return `http://127.0.0.1:8000/storage/${colorData.images[0]}`;
+    if (item.product.images?.[0]) return `http://127.0.0.1:8000/storage/${item.product.images[0]}`;
     return null;
   };
 
@@ -134,40 +147,59 @@ const [showCityList, setShowCityList] = useState(false);
       : parseFloat(item.product.price).toFixed(2);
   };
 
-  if (orderSent) {
-    return (
-      <div className="cart-page">
-        <Header searchTerm="" onSearchChange={() => {}} />
-        <div className="cart-success">
-          <div className="cart-success-icon">✅</div>
-          <h2>Commande envoyée !</h2>
-          <p>Votre commande a été transmise via WhatsApp. Nous vous contacterons très prochainement.</p>
-          <div className="cart-success-btns">
-            <button onClick={() => { setOrderSent(false); navigate('/'); }} className="cart-success-btn-home">
-              Retour à l'accueil
-            </button>
-            <button onClick={() => { setOrderSent(false); navigate('/catalogue'); }} className="cart-success-btn-shop">
-              Continuer mes achats
-            </button>
-          </div>
+if (orderSent) {
+  return (
+    <div className="cart-page">
+      <Header searchTerm="" onSearchChange={() => {}} />
+      <div className="cart-success">
+        <div className="cart-success-icon">✅</div>
+        <h2>Commande envoyée !</h2>
+        <p>Votre commande a été transmise via WhatsApp. Nous vous contacterons très prochainement.</p>
+        <p className="cart-success-code-info">
+          📩 Votre code de suivi vous a été envoyé sur WhatsApp — retrouvez-le dans votre conversation avec nous.
+        </p>
+
+                <div className="cart-success-btns">
+          <button onClick={() => { setOrderSent(false); navigate('/'); }} className="cart-success-btn-home">
+            Retour à l'accueil
+          </button>
+          <button onClick={() => { setOrderSent(false); navigate('/catalogue'); }} className="cart-success-btn-shop">
+            Continuer mes achats
+          </button>
+          <button onClick={() => { setOrderSent(false); navigate('/suivre-commande'); }} className="cart-success-btn-track">
+            📦 Suivre ma commande
+          </button>
         </div>
-        <Footer />
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
+}
 
   return (
     <div className="cart-page">
       <Header searchTerm="" onSearchChange={() => {}} />
 
       <div className="cart-hero">
-        <div className="cart-breadcrumb">
-          <Link to="/">Accueil</Link>
-          <span>/</span>
-          <span>Mon Panier</span>
-        </div>
-        <h1 className="cart-title">Mon Panier <span className="cart-count">({totalItems} article{totalItems > 1 ? 's' : ''})</span></h1>
-      </div>
+  <div className="cart-breadcrumb">
+    <Link to="/">Accueil</Link>
+    <span>/</span>
+    <span>Mon Panier</span>
+  </div>
+  <h1 className="cart-title">Mon Panier <span className="cart-count">({totalItems} article{totalItems > 1 ? 's' : ''})</span></h1>
+
+  {/* 👇 nouveau bloc */}
+  <div className="cart-track-banner">
+    <div className="cart-track-banner-icon">📦</div>
+    <div className="cart-track-banner-text">
+      <h3>Vous avez déjà commandé chez nous ?</h3>
+      <p>Suivez l'état de votre commande à tout moment avec votre code de suivi.</p>
+    </div>
+    <Link to="/suivre-commande" className="cart-track-banner-btn">
+      Suivre ma commande →
+    </Link>
+  </div>
+</div>
 
       <div className="cart-container">
         {cartItems.length === 0 ? (
@@ -380,7 +412,7 @@ const [showCityList, setShowCityList] = useState(false);
                   onClick={() => navigate(`/produit/${product.id}`)}>
                   <div className="cart-suggested-img">
                     {product.images?.[0] ? (
-                      <img src={`https://mblifestyle-backend-production.up.railway.app/storage/${product.images[0]}`} alt={product.name} />
+                      <img src={`http://127.0.0.1:8000/storage/${product.images[0]}`} alt={product.name} />
                     ) : <div className="cart-suggested-placeholder">👕</div>}
                   </div>
                   <div className="cart-suggested-info">
@@ -428,9 +460,19 @@ const [showCityList, setShowCityList] = useState(false);
                 );
               })}
             </div>
+                        <div className="confirm-summary-rows">
+              <div className="confirm-summary-row">
+                <span>Sous-total</span>
+                <span>{discountedTotal.toFixed(2)} DH</span>
+              </div>
+              <div className="confirm-summary-row">
+                <span>Livraison {selectedCity ? `(${selectedCity.name})` : ''}</span>
+                <span>{deliveryPrice === 0 ? 'Gratuite' : `${deliveryPrice.toFixed(2)} DH`}</span>
+              </div>
+            </div>
             <div className="confirm-total">
               <span>Total</span>
-              <span>{discountedTotal.toFixed(2)} DH</span>
+              <span>{(discountedTotal + deliveryPrice).toFixed(2)} DH</span>
             </div>
             <div className="confirm-btns">
               <button className="confirm-btn-cancel" onClick={() => setShowConfirm(false)}>Modifier</button>
