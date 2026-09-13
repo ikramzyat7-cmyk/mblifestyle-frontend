@@ -7,7 +7,7 @@ import {
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminDashboard.css';
-
+import { storageUrl } from '../api/config';
 const COLORS = ['#111111', '#1e3a8a', '#2e7d32', '#e74c3c', '#f59e0b', '#888888', '#d8c3a5'];
 
 function AdminDashboard() {
@@ -272,7 +272,7 @@ function AdminDashboard() {
                   <tbody>
                     {recentProducts.map((product) => {
                       const thumbUrl = product.images?.[0]
-                        ? `http://127.0.0.1:8000/storage/${product.images[0]}`
+                        ? `${storageUrl(product.images[0])}`
                         : null;
 
                       return (

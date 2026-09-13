@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminProductDetail.css';
-
+import { storageUrl } from '../api/config';
 function AdminProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -49,9 +49,9 @@ function AdminProductDetail() {
   const images = product.images || [];
   const selectedColorData = product.colors?.find((c) => c.hex === selectedColor);
   const mainImage = selectedColorData?.image
-    ? `http://127.0.0.1:8000/storage/${selectedColorData.image}`
+    ? `${storageUrl(selectedColorData.image)}`
     : images[activeImage]
-    ? `http://127.0.0.1:8000/storage/${images[activeImage]}`
+    ? `${storageUrl(images[activeImage])}`
     : 'https://via.placeholder.com/500x600/f5f5f5/999999?text=Pas+d%27image';
 
   const inStockSizes = (product.sizes || []).filter((s) => s.stock > 0);
@@ -96,7 +96,7 @@ function AdminProductDetail() {
                     onClick={() => { setActiveImage(index); setSelectedColor(null); }}
                   >
                     <img
-                      src={`http://127.0.0.1:8000/storage/${img}`}
+                      src={`${storageUrl(img)}`}
                       alt={`thumb-${index}`}
                     />
                     <span className="apd-thumb-label">

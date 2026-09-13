@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../api/axios';
 import './CategoryShowcase.css';
-
+import { storageUrl } from '../api/config';
 function CategoryShowcase() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -31,7 +31,7 @@ function CategoryShowcase() {
             <div className="category-showcase-image">
               {cat.image ? (
                 <img
-                  src={`http://127.0.0.1:8000/storage/${cat.image}`}
+                  src={`${storageUrl(cat.image)}`}
                   alt={cat.name}
                 />
               ) : (

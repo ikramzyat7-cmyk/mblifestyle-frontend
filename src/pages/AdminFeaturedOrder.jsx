@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminFeaturedOrder.css';
-
+import { storageUrl } from '../api/config';
 function AdminFeaturedOrder() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -114,7 +114,7 @@ function AdminFeaturedOrder() {
                           <div className="afo-image">
                             {product.images?.[0] ? (
                               <img
-                                src={`http://127.0.0.1:8000/storage/${product.images[0]}`}
+                                src={`${storageUrl(product.images[0])}`}
                                 alt={product.name}
                               />
                             ) : (

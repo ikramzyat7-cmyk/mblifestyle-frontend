@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 import { useWishlist } from '../context/WishlistContext';
-
+import { storageUrl } from '../api/config';
 
 
 function ProductCard({ product }) {
@@ -20,15 +20,15 @@ function ProductCard({ product }) {
 
   const images = product.images || [];
   const defaultImage = images[0]
-    ? `http://127.0.0.1:8000/storage/${images[0]}`
+    ? `${storageUrl(images[0])}`
     : null;
   const hoverImage = images[1]
-    ? `http://127.0.0.1:8000/storage/${images[1]}`
+    ? `${storageUrl(images[1])}`
     : defaultImage;
 
   const selectedColorData = product.colors?.find((c) => c.hex === selectedColor);
   const frontImage = selectedColorData?.image
-    ? `http://127.0.0.1:8000/storage/${selectedColorData.image}`
+    ? `${storageUrl(selectedColorData.image)}`
     : defaultImage;
 
   const hasColors = product.colors && product.colors.length > 0;

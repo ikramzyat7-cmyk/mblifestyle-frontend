@@ -10,7 +10,7 @@ import BannerGrid from '../components/BannerGrid';
 import Testimonials from '../components/Testimonials';
 import api from '../api/axios';
 import './Home.css';
-
+import { storageUrl } from '../api/config';
 // ===== HOOK SCROLL ANIMATION =====
 function useScrollAnimation() {
   const ref = useRef(null);
@@ -75,7 +75,7 @@ function CategoriesCarousel({ categories }) {
             {categories.map((cat) => (
               <div key={cat.id} className="cat-big-card" onClick={() => navigate(`/categorie/${cat.slug}`)}>
                 {cat.image ? (
-                  <img src={`http://127.0.0.1:8000/storage/${cat.image}`} alt={cat.name} className="cat-big-img" />
+                  <img src={`${storageUrl(cat.image)}`} alt={cat.name} className="cat-big-img" />
                 ) : (
                   <div className="cat-big-placeholder">👕</div>
                 )}
@@ -129,7 +129,7 @@ function NewArrivalsSection({ products, featuredImage }) {
       <div className="new-arrivals-inner">
         <div className="new-arrivals-featured">
           {featuredImage ? (
-            <img src={`http://127.0.0.1:8000/storage/${featuredImage}`} alt="Nouveautés" className="new-arrivals-featured-img" />
+            <img src={`${storageUrl(featuredImage)}`} alt="Nouveautés" className="new-arrivals-featured-img" />
           ) : (
             <div className="new-arrivals-featured-placeholder">
               <span>📷</span><p>Ajoutez une image depuis<br/>les paramètres admin</p>
@@ -154,7 +154,7 @@ function NewArrivalsSection({ products, featuredImage }) {
                 <div className="new-arrivals-card-img">
                   {product.discount > 0 && <span className="new-arrivals-badge">-{product.discount}%</span>}
                   {product.images?.[0] ? (
-                    <img src={`http://127.0.0.1:8000/storage/${product.images[0]}`} alt={product.name} />
+                    <img src={`${storageUrl(product.images[0])}`} alt={product.name} />
                   ) : <div className="new-arrivals-no-img">👕</div>}
                 </div>
                 <div className="new-arrivals-card-info">
@@ -340,15 +340,15 @@ function Home() {
                       {slide.button_text && <button className="sfb-cta" onClick={() => navigate(slide.button_link || '/catalogue')}>{slide.button_text}</button>}
                     </div>
                     <div className="sfb-photo">
-                      {slide.product_image && <img src={`http://127.0.0.1:8000/storage/${slide.product_image}`} alt={slide.title} />}
+                      {slide.product_image && <img src={`${storageUrl(slide.product_image)}`} alt={slide.title} />}
                     </div>
                     <div className="sfb-badge"><span>QUALITÉ<br/>GARANTIE</span><div className="sfb-badge-stars">★★★★★</div></div>
                   </div>
                 ) : slide.video ? (
-                  <video className="slide-video" autoPlay muted loop playsInline src={`http://127.0.0.1:8000/storage/${slide.video}`} />
+                  <video className="slide-video" autoPlay muted loop playsInline src={`${storageUrl(slide.video)}`} />
                 ) : (
                   <div className="slide-bg" style={{
-                    backgroundImage: slide.image ? `url(http://127.0.0.1:8000/storage/${slide.image})` : 'none',
+                    backgroundImage: slide.image ? `url(${storageUrl(slide.image)})` : 'none',
                     backgroundColor: !slide.image ? '#111111' : 'transparent',
                   }} />
                 )}
@@ -413,7 +413,7 @@ function Home() {
                 <div key={i} className={`lookbook-card scroll-animate-child ${lookbookVisible ? 'scroll-visible' : ''}`}
                   style={{ transitionDelay: `${i * 0.15}s`, cursor: item.link ? 'pointer' : 'default' }}
                   onClick={() => item.link && navigate(item.link)}>
-                  <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt={item.title} className="lookbook-img" />
+                  <img src={`${storageUrl(item.image)}`} alt={item.title} className="lookbook-img" />
                   <div className="lookbook-overlay">
                     {item.title && <h3 className="lookbook-title">{item.title}</h3>}
                     {item.link && <span className="lookbook-btn">Découvrir →</span>}
@@ -463,7 +463,7 @@ function Home() {
                   style={{ transitionDelay: `${i * 0.1}s` }}
                   onClick={() => navigate(`/produit/${product.id}`)}>
                   <div className="flash-card-img">
-                    {product.images?.[0] ? <img src={`http://127.0.0.1:8000/storage/${product.images[0]}`} alt={product.name} /> : <div className="flash-no-img">👕</div>}
+                    {product.images?.[0] ? <img src={`${storageUrl(product.images[0])}`} alt={product.name} /> : <div className="flash-no-img">👕</div>}
                     {product.discount > 0 && <span className="flash-badge">-{product.discount}%</span>}
                   </div>
                   <div className="flash-info">
@@ -487,7 +487,7 @@ function Home() {
         <div className="fagor-banner__photo">
           <div className="fagor-banner__circle">
             {promoData.image ? (
-              <img src={`http://127.0.0.1:8000/storage/${promoData.image}`} alt="Promo" />
+              <img src={`${storageUrl(promoData.image)}`} alt="Promo" />
             ) : (
               <div className="fagor-banner__placeholder-circle"><span>👕</span><p>Photo depuis<br/>les paramètres</p></div>
             )}

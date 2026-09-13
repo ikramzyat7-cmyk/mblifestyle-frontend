@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import './PromoPopup.css';
-
+import { storageUrl } from '../api/config';
 function PromoPopup() {
   const [popup, setPopup] = useState(null);
   const [visible, setVisible] = useState(false);
@@ -29,7 +29,7 @@ function PromoPopup() {
 
   const product = popup.products[currentIndex];
   const imageUrl = product.images?.[0]
-    ? `http://127.0.0.1:8000/storage/${product.images[0]}`
+    ? `${storageUrl(product.images[0])}`
     : null;
 
   const discountedPrice = product.discount > 0

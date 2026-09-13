@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminDashboard.css';
-
+import { storageUrl } from '../api/config';
 function AdminNewArrivals() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -93,7 +93,7 @@ function AdminNewArrivals() {
                 <tbody>
                   {products.map((product) => {
                     const thumbUrl = product.images?.[0]
-                      ? `http://127.0.0.1:8000/storage/${product.images[0]}`
+                      ? `${storageUrl(product.images[0])}`
                       : null;
 
                     const formattedDate = new Date(product.created_at).toLocaleDateString('fr-FR', {

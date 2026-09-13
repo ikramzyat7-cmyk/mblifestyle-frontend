@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import './Slider.css';
-
+import { storageUrl } from '../api/config';
 function Slider() {
   const [slides, setSlides] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -29,7 +29,7 @@ function Slider() {
 
   const slide = slides[current];
   const imageUrl = slide.image
-    ? `http://127.0.0.1:8000/storage/${slide.image}`
+    ? `${storageUrl(slide.image)}`
     : 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80';
 
   return (
@@ -40,7 +40,7 @@ function Slider() {
           className={`slider-slide ${i === current ? 'active' : ''}`}
           style={{
             backgroundImage: `url(${s.image
-              ? `http://127.0.0.1:8000/storage/${s.image}`
+              ? `${storageUrl(s.image)}`
               : 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'
             })`,
           }}

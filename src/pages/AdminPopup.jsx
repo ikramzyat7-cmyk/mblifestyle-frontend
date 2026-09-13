@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminPopup.css';
-
+import { storageUrl } from '../api/config';
 function AdminPopup() {
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
@@ -136,7 +136,7 @@ function AdminPopup() {
                       {product.images?.[0] && (
                         <div className="popup-preview-image">
                           <img
-                            src={`http://127.0.0.1:8000/storage/${product.images[0]}`}
+                            src={`${storageUrl(product.images[0])}`}
                             alt={product.name}
                           />
                           {product.discount > 0 && (

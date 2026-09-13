@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminCategories.css';
-
+import { storageUrl } from '../api/config';
 function AdminCategories() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -339,7 +339,7 @@ function AdminCategories() {
                 <tbody>
                   {categories.map((category) => {
                     const thumbUrl = category.image
-                      ? `http://127.0.0.1:8000/storage/${category.image}`
+                      ? `${storageUrl(category.image)}`
                       : null;
 
                     return (

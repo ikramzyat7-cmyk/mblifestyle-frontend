@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
-
+import { storageUrl } from '../api/config';
 const positionLabels = {
   'main': '⬅️ Grande bannière (gauche)',
   'top-right': '↗️ Petite bannière (haut droite)',
@@ -192,7 +192,7 @@ function AdminBanners() {
                 <div key={banner.id} className={`slide-card ${!banner.is_active ? 'inactive' : ''}`}>
                   <div className="slide-card-image">
                     {banner.image ? (
-                      <img src={`http://127.0.0.1:8000/storage/${banner.image}`} alt={banner.title} />
+                      <img src={`${storageUrl(banner.image)}`} alt={banner.title} />
                     ) : (
                       <div className="slide-card-placeholder">Pas d'image</div>
                     )}

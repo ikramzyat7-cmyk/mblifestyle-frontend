@@ -136,8 +136,8 @@ const [showCityList, setShowCityList] = useState(false);
 
   const getItemImage = (item) => {
     const colorData = item.product.colors?.find((c) => c.hex === item.color);
-    if (colorData?.images?.length > 0) return `http://127.0.0.1:8000/storage/${colorData.images[0]}`;
-    if (item.product.images?.[0]) return `http://127.0.0.1:8000/storage/${item.product.images[0]}`;
+    if (colorData?.images?.length > 0) return `${storageUrl(colorData.images[0])}`;
+    if (item.product.images?.[0]) return `${storageUrl(item.product.images[0])}`;
     return null;
   };
 
@@ -412,7 +412,7 @@ if (orderSent) {
                   onClick={() => navigate(`/produit/${product.id}`)}>
                   <div className="cart-suggested-img">
                     {product.images?.[0] ? (
-                      <img src={`http://127.0.0.1:8000/storage/${product.images[0]}`} alt={product.name} />
+                      <img src={`${storageUrl(product.images[0])}`} alt={product.name} />
                     ) : <div className="cart-suggested-placeholder">👕</div>}
                   </div>
                   <div className="cart-suggested-info">

@@ -143,7 +143,7 @@ function CategoryPage() {
       {/* Hero */}
       <div className="category-hero"
         style={categoryData?.image ? {
-          backgroundImage: `url(http://127.0.0.1:8000/storage/${categoryData.image})`,
+          backgroundImage: `url(${storageUrl(categoryData.image)})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         } : {}}>
