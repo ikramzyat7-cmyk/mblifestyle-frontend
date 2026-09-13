@@ -258,7 +258,7 @@ function AdminSettings() {
         />
         {form[`lookbook_image_${n}`] && !form[`lookbook_image_${n}_file`] && (
           <img
-            src={`${storageUrl(form[`lookbook_image_${n)}`]}`}
+            src={storageUrl(form[`lookbook_image_${n}`])}
             alt={`Lookbook ${n}`}
             style={{ width: '100%', maxHeight: '120px', objectFit: 'cover', borderRadius: '6px', marginTop: '8px' }}
           />
