@@ -565,3 +565,136 @@
   padding: 10px 14px;
   border-radius: 6px;
 }
+/* ===== MODE SOMBRE - SITE PUBLIC ===== */
+body.site-dark .category-page {
+  background-color: var(--site-bg);
+}
+
+/* Sidebar filtres */
+body.site-dark .sidebar-block {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .sidebar-block h3 {
+  color: var(--site-text);
+  border-color: var(--site-border);
+}
+
+body.site-dark .sidebar-checkbox {
+  color: var(--site-text-secondary);
+}
+
+/* Filtre prix */
+body.site-dark .price-input-box {
+  border-color: var(--site-border);
+}
+
+body.site-dark .price-input-label {
+  background-color: var(--site-bg-alt);
+  color: var(--site-text-secondary);
+  border-color: var(--site-border);
+}
+
+body.site-dark .price-input-box input {
+  color: var(--site-text);
+}
+
+body.site-dark .price-slider-track {
+  background-color: var(--site-border);
+}
+
+/* Filtre tailles */
+body.site-dark .sidebar-size-btn {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+  color: var(--site-text-secondary);
+}
+
+/* Toolbar (tri, vue) */
+body.site-dark .category-toolbar {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .category-count {
+  color: var(--site-text-secondary);
+}
+
+body.site-dark .view-mode-btns {
+  border-color: var(--site-border);
+}
+
+body.site-dark .view-mode-btn {
+  color: var(--site-text-secondary);
+}
+
+body.site-dark .view-mode-btn:hover:not(.active) {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .sort-select {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+  color: var(--site-text);
+}
+
+/* Aucun résultat */
+body.site-dark .no-results {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .no-results p {
+  color: var(--site-text-secondary);
+}
+
+/* Skeleton (chargement) */
+body.site-dark .skeleton-card {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .skeleton-image,
+body.site-dark .skeleton-line {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 400px 100%;
+}
+
+/* Pagination */
+body.site-dark .pagination-btn {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+  color: var(--site-text);
+}
+
+body.site-dark .pagination-dots {
+  color: var(--site-text-secondary);
+}
+
+/* Modal guide des tailles */
+body.site-dark .pd-modal {
+  background-color: var(--site-card-bg);
+}
+
+body.site-dark .pd-modal-header {
+  border-color: var(--site-border);
+}
+
+body.site-dark .pd-modal-header button {
+  color: var(--site-text-secondary);
+}
+
+body.site-dark .pd-size-table td {
+  color: var(--site-text-secondary);
+  border-color: var(--site-border);
+}
+
+body.site-dark .pd-size-table tr:hover td {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .pd-size-guide-tip {
+  background-color: var(--site-bg-alt);
+  color: var(--site-text-secondary);
+}
