@@ -5,6 +5,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './Admin.css';
 import { storageUrl } from '../api/config';
+import logo from '../assets/logo.png';
 const availableColors = [
   { name: 'Noir', hex: '#111111' },
   { name: 'Blanc', hex: '#ffffff' },
@@ -760,7 +761,14 @@ else if (categoryFilter) {
   </div>
 </div>
   
-        {loading && <p className="admin-loading">Chargement...</p>}
+        {loading && (
+  <div className="admin-loading-screen">
+    <img src={logo} alt="MBLIFESTYLE" className="admin-loading-logo" />
+    <div className="admin-loading-bar">
+      <div className="admin-loading-bar-fill"></div>
+    </div>
+  </div>
+)}
         {!loading && filteredProducts.length === 0 && <p className="admin-loading">Aucun produit.</p>}
 {!loading && filteredProducts.length > 0 && (
           <div className="admin-table-wrapper">
