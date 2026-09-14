@@ -68,7 +68,6 @@ function AdminBanners() {
 
     try {
       if (editingId) {
-        formData.append('_method', 'PUT');
         await api.post(`/banners/${editingId}`, formData);
         setMessage('Bannière modifiée !');
       } else {
