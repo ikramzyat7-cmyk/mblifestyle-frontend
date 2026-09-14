@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminPopup.css';
+import LoadingScreen from '../components/LoadingScreen';
 import { storageUrl } from '../api/config';
 function AdminPopup() {
   const [products, setProducts] = useState([]);
@@ -57,7 +58,7 @@ function AdminPopup() {
         {message && <p className="admin-message">{message}</p>}
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <div className="popup-admin-layout">
             <form className="popup-admin-form" onSubmit={handleSubmit}>

@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminOrders.css';
-
+import LoadingScreen from '../components/LoadingScreen';
 const colorNames = {
   '#111111': 'Noir', '#ffffff': 'Blanc', '#1e3a8a': 'Bleu',
   '#888888': 'Gris', '#d8c3a5': 'Beige', '#c0392b': 'Rouge', '#2e7d32': 'Vert',
@@ -218,7 +218,7 @@ function AdminOrders() {
         </div>
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : filteredOrders.length === 0 ? (
           <p className="admin-loading">Aucune commande.</p>
         ) : (

@@ -8,6 +8,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminDashboard.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 const COLORS = ['#111111', '#1e3a8a', '#2e7d32', '#e74c3c', '#f59e0b', '#888888', '#d8c3a5'];
 
 function AdminDashboard() {
@@ -120,7 +121,7 @@ function AdminDashboard() {
         </div>
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <>
             {/* Stats cards */}

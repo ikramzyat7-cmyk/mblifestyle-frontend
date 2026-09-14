@@ -3,6 +3,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminDashboard.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 function AdminNewArrivals() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,7 +58,7 @@ function AdminNewArrivals() {
         </div>
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <div className="admin-recent-section">
             <div className="admin-recent-header">

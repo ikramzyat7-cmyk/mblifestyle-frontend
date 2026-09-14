@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminReviews.css';
-
+import LoadingScreen from '../components/LoadingScreen';
 function StarDisplay({ rating }) {
   return (
     <div className="star-display">
@@ -108,7 +108,7 @@ function AdminReviews() {
         </div>
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : filteredReviews.length === 0 ? (
           <p className="admin-loading">Aucun avis.</p>
         ) : (

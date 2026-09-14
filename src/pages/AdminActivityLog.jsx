@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminActivityLog.css';
-
+import LoadingScreen from '../components/LoadingScreen';
 const actionConfig = {
   product_created:  { label: 'Produit ajouté',      color: '#2e7d32', icon: '➕' },
   product_updated:  { label: 'Produit modifié',      color: '#1e3a8a', icon: '✏️' },
@@ -108,7 +108,7 @@ function AdminActivityLog() {
         </div>
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : logs.length === 0 ? (
           <p className="admin-loading">Aucune activité enregistrée.</p>
         ) : (

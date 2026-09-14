@@ -4,6 +4,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminProductDetail.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 function AdminProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function AdminProductDetail() {
       <div className="admin-layout">
         <AdminSidebar />
         <main className="admin-main">
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         </main>
       </div>
     );

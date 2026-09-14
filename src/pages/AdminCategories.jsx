@@ -3,6 +3,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminCategories.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 function AdminCategories() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -312,7 +313,7 @@ function AdminCategories() {
   )}
 </div>
 
-          {loading && <p className="admin-loading">Chargement...</p>}
+          {loading && <LoadingScreen />}
           {!loading && categories.length === 0 && <p className="admin-loading">Aucune catégorie.</p>}
 
           {!loading && categories.length > 0 && (

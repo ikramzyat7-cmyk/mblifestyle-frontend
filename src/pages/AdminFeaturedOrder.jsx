@@ -4,6 +4,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminFeaturedOrder.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 function AdminFeaturedOrder() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,7 +70,7 @@ function AdminFeaturedOrder() {
         {message && <p className="admin-message">{message}</p>}
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : products.length === 0 ? (
           <div className="afo-empty">
             <p>Aucun produit en vedette.</p>

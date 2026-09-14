@@ -3,6 +3,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminSlides.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 function AdminSlides() {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -237,7 +238,7 @@ function AdminSlides() {
         )}
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <div className="slides-list">
             {slides.length === 0 ? (

@@ -5,6 +5,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminProductForm.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 const availableColors = [
   { name: 'Noir',      hex: '#111111' },
   { name: 'Blanc',     hex: '#f5f5f5' },
@@ -353,7 +354,7 @@ const currentSizes = normalizedSizesByCategory[normalizeKey(form.category)] || [
   if (loading) return (
     <div className="admin-layout">
       <AdminSidebar />
-      <main className="admin-main"><p className="admin-loading">Chargement...</p></main>
+      <main className="admin-main"><LoadingScreen /></main>
     </div>
   );
 

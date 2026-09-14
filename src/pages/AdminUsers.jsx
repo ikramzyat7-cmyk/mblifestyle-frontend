@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminUsers.css';
-
+import LoadingScreen from '../components/LoadingScreen';
 const roleLabels = {
   super_admin: { label: 'Super Admin', color: '#e74c3c' },
   stock_manager: { label: 'Gestionnaire stock', color: '#1e3a8a' },
@@ -166,7 +166,7 @@ function AdminUsers() {
         )}
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <div className="au-list">
             {users.map((user) => {

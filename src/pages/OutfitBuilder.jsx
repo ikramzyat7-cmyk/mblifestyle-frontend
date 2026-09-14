@@ -7,6 +7,7 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import api from '../api/axios';
 import './OutfitBuilder.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 const zoneCategories = {
   casquette: ['Casquettes'],
   haut: ['T-shirts', 'Chemises', 'Pulls', 'Polos'],

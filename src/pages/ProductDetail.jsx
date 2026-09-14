@@ -8,6 +8,7 @@ import ProductCard from '../components/ProductCard';
 import api from '../api/axios';
 import './ProductDetail.css';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 const colorNames = {
   '#111111': 'Noir', '#f5f5f5': 'Blanc', '#cc0000': 'Rouge',
   '#1e3a8a': 'Bleu', '#0a1f5c': 'Marine', '#2e7d32': 'Vert',

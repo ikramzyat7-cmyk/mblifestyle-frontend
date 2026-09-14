@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import { storageUrl } from '../api/config';
+import LoadingScreen from '../components/LoadingScreen';
 const positionLabels = {
   'main': '⬅️ Grande bannière (gauche)',
   'top-right': '↗️ Petite bannière (haut droite)',
@@ -181,7 +182,7 @@ function AdminBanners() {
         )}
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <div className="slides-list">
             {banners.length === 0 ? (

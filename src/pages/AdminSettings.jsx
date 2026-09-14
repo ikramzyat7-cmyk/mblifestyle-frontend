@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminSettings.css';
+import LoadingScreen from '../components/LoadingScreen';
 import { storageUrl } from '../api/config';
 function AdminSettings() {
   const [form, setForm] = useState({
@@ -108,7 +109,7 @@ function AdminSettings() {
         {message && <p className="admin-message">{message}</p>}
 
         {loading ? (
-          <p className="admin-loading">Chargement...</p>
+          <LoadingScreen />
         ) : (
           <form className="settings-form" onSubmit={handleSubmit}>
             <div className="settings-grid">
