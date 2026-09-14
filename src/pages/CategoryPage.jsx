@@ -6,7 +6,7 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import ProductCard from '../components/ProductCard';
 import api from '../api/axios';
 import './CategoryPage.css';
-
+import { storageUrl } from '../api/config';
 const PRODUCTS_PER_PAGE = 20;
 
 const availableColors = [
