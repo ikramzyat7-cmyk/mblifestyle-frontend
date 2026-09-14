@@ -79,12 +79,12 @@ const loadData = () => {
     };
   }, []);
 
-  const handleLogout = () => {
-    api.post('/logout').finally(() => {
-      localStorage.removeItem('admin_token');
-      navigate('/login');
-    });
-  };
+const handleLogout = () => {
+  api.post('/logout').finally(() => {
+    localStorage.removeItem('admin_token');
+    navigate('/mb-gestion-2026');
+  });
+};
 
   return (
     <aside className="admin-sidebar">
