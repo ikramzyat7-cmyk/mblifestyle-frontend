@@ -39,8 +39,8 @@ import CGV from './pages/CGV';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import Wishlist from './pages/Wishlist';
 import { WishlistProvider } from './context/WishlistContext';
-
-
+import { SiteThemeProvider } from './context/SiteThemeContext';
+import SiteThemeToggle from './components/SiteThemeToggle';
 
 
 function App() {
@@ -48,6 +48,7 @@ function App() {
     <WishlistProvider>
     <CartProvider>
       <CookieBanner />
+       <SiteThemeProvider>
       <BrowserRouter>
         <Routes>
           {/* Routes publiques */}
@@ -153,7 +154,9 @@ function App() {
               </AuthProvider>
           } />
         </Routes>
+        <SiteThemeToggle />
       </BrowserRouter>
+      </SiteThemeProvider>
           </CartProvider>
     </WishlistProvider>
   );

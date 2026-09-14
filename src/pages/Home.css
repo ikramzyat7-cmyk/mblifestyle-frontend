@@ -1746,3 +1746,164 @@
   opacity: 1;
   transform: translateY(0);
 }
+/* ===== MODE SOMBRE - SITE PUBLIC ===== */
+body.site-dark .home-page {
+  background-color: var(--site-bg);
+}
+
+body.site-dark .home-section {
+  background-color: var(--site-bg);
+}
+
+body.site-dark .home-section-gray {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .home-section-title {
+  color: var(--site-text);
+}
+
+/* Catégories (petites cards) */
+body.site-dark .cat-card-img {
+  background-color: var(--site-bg-alt);
+  border-color: var(--site-border);
+}
+
+body.site-dark .cat-card-name {
+  color: var(--site-text);
+}
+
+/* Carrousel catégories */
+body.site-dark .cats-carousel-section {
+  background-color: var(--site-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .cat-big-card {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .cat-big-placeholder {
+  background: linear-gradient(135deg, #1a1a1a, #222222);
+}
+
+body.site-dark .cats-carousel-arrow {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+  color: var(--site-text);
+}
+
+body.site-dark .cats-carousel-dot {
+  background-color: var(--site-border);
+}
+
+/* Bannière milieu (avantages) */
+body.site-dark .mid-banner {
+  background-color: var(--site-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .mid-banner-item:hover {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .mid-banner-icon-box {
+  background-color: var(--site-bg-alt);
+  border-color: var(--site-border);
+  color: var(--site-text);
+}
+
+body.site-dark .mid-banner-title {
+  color: var(--site-text);
+}
+
+body.site-dark .mid-banner-divider {
+  background-color: var(--site-border);
+}
+
+/* Marques (carrousel défilant) */
+body.site-dark .brands-carousel-wrapper::before {
+  background: linear-gradient(to right, var(--site-bg), transparent);
+}
+
+body.site-dark .brands-carousel-wrapper::after {
+  background: linear-gradient(to left, var(--site-bg), transparent);
+}
+
+body.site-dark .brand-logo-item {
+  border-color: var(--site-border);
+}
+
+body.site-dark .brand-logo-item:hover {
+  background-color: var(--site-bg-alt);
+}
+
+/* Marques (grille statique) */
+body.site-dark .brands-section {
+  background-color: var(--site-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .brand-section-card {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .brand-section-name {
+  color: var(--site-text-secondary);
+}
+
+/* Nouveautés */
+body.site-dark .new-arrivals-section {
+  background-color: var(--site-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .new-arrivals-featured,
+body.site-dark .new-arrivals-featured-placeholder {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .new-arrivals-card {
+  background-color: var(--site-card-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .new-arrivals-card-img {
+  background-color: var(--site-bg-alt);
+}
+
+body.site-dark .new-arrivals-name,
+body.site-dark .new-arrivals-price-new {
+  color: var(--site-text);
+}
+
+/* Lookbook */
+body.site-dark .lookbook-section {
+  background-color: var(--site-bg);
+  border-color: var(--site-border);
+}
+
+/* Compteurs */
+body.site-dark .counters-section {
+  background-color: var(--site-bg);
+  border-color: var(--site-border);
+}
+
+body.site-dark .counter-item {
+  border-color: var(--site-border);
+}
+
+body.site-dark .counter-icon-box {
+  background-color: var(--site-bg-alt);
+  border-color: var(--site-border);
+  color: var(--site-text);
+}
+
+body.site-dark .counter-number {
+  color: var(--site-text);
+}
+
+body.site-dark .counter-label {
+  color: var(--site-text-secondary);
+}

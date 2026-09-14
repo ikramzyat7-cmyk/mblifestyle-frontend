@@ -8,6 +8,22 @@
   --gray-bg: #f5f5f5;
   --gray-border: #e0e0e0;
   --white: #ffffff;
+
+  --site-bg: #ffffff;
+  --site-bg-alt: #f5f5f5;
+  --site-text: #111111;
+  --site-text-secondary: #666666;
+  --site-border: #e0e0e0;
+  --site-card-bg: #ffffff;
+}
+
+body.site-dark {
+  --site-bg: #111111;
+  --site-bg-alt: #1a1a1a;
+  --site-text: #f5f5f5;
+  --site-text-secondary: #bbbbbb;
+  --site-border: #2a2a2a;
+  --site-card-bg: #1e1e1e;
 }
 
 * {
@@ -296,6 +312,12 @@ body {
   background-color: #ffffff;
   color: #111111;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.site-dark {
+  background-color: #111111;
+  color: #f5f5f5;
 }
 
 a {
