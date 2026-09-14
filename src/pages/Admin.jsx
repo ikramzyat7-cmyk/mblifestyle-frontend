@@ -882,16 +882,17 @@ else if (categoryFilter) {
     </div>
   ) : (
     <div
-      className="admin-stock-display"
-      onClick={() => startEditStock(product)}
-      title="Cliquer pour modifier le stock"
-    >
-      {product.stock > 0 ? (
-        <span className="admin-stock-value">{product.stock}</span>
-      ) : (
-        <span className="admin-badge-stock-out">Rupture</span>
-      )}
-    </div>
+  className="admin-stock-display"
+  onClick={product.stock > 0 ? () => startEditStock(product) : undefined}
+  title={product.stock > 0 ? 'Cliquer pour modifier le stock' : ''}
+  style={product.stock <= 0 ? { cursor: 'default' } : undefined}
+>
+  {product.stock > 0 ? (
+    <span className="admin-stock-value">{product.stock}</span>
+  ) : (
+    <span className="admin-badge-stock-out">Rupture</span>
+  )}
+</div>
   )}
 </td>
                       <td>
