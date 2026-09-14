@@ -283,6 +283,16 @@ const currentSizes = normalizedSizesByCategory[normalizeKey(form.category)] || [
       ),
     }));
   };
+    const removeNewColorImage = (hex, imgIndex) => {
+    setForm((prev) => ({
+      ...prev,
+      colors: prev.colors.map((c) =>
+        c.hex === hex
+          ? { ...c, newImages: c.newImages.filter((_, i) => i !== imgIndex) }
+          : c
+      ),
+    }));
+  };
   const removeColorImage = (hex, imgIndex) => {
     setForm((prev) => ({
       ...prev,
@@ -554,15 +564,39 @@ const currentSizes = normalizedSizesByCategory[normalizeKey(form.category)] || [
                                 onChange={(e) => setColorImages(c.hex, e.target.files)}
                                 style={{ fontSize: '12px' }}
                               />
-                              {/* Aperçu nouvelles photos */}
+                                                            {/* Aperçu nouvelles photos */}
                               {c.newImages?.length > 0 && (
                                 <div style={{ display: 'flex', gap: '6px', marginTop: '8px', flexWrap: 'wrap' }}>
                                   {c.newImages.map((file, idx) => (
-                                    <img key={idx}
-                                      src={URL.createObjectURL(file)}
-                                      alt={`new-${idx}`}
-                                      style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '6px', border: '2px solid #cc0000' }}
-                                    />
+                                    <div key={idx} style={{ position: 'relative', width: '56px', height: '56px' }}>
+                                      <img
+                                        src={URL.createObjectURL(file)}
+                                        alt={`new-${idx}`}
+                                        style={{ width: '56px', height: '56px', objectFit: 'cover', borderRadius: '6px', border: '2px solid #cc0000' }}
+                                      />
+                                      <button
+                                        type="button"
+                                        onClick={() => removeNewColorImage(c.hex, idx)}
+                                        style={{
+                                          position: 'absolute',
+                                          top: '-6px',
+                                          right: '-6px',
+                                          width: '18px',
+                                          height: '18px',
+                                          borderRadius: '50%',
+                                          background: '#cc0000',
+                                          color: '#fff',
+                                          border: 'none',
+                                          fontSize: '11px',
+                                          lineHeight: '18px',
+                                          cursor: 'pointer',
+                                          padding: 0,
+                                        }}
+                                        title="Retirer cette photo"
+                                      >
+                                        ✕
+                                      </button>
+                                    </div>
                                   ))}
                                 </div>
                               )}
