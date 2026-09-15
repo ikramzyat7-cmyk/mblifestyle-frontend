@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import api from '../api/axios';
 import './Cart.css';
+import { storageUrl } from '../api/config';
 
 const colorNames = {
   '#111111': 'Noir', '#f5f5f5': 'Blanc', '#cc0000': 'Rouge',
