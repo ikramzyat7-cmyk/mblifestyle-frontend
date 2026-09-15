@@ -41,7 +41,7 @@ import Wishlist from './pages/Wishlist';
 import { WishlistProvider } from './context/WishlistContext';
 import { SiteThemeProvider } from './context/SiteThemeContext';
 import SiteThemeToggle from './components/SiteThemeToggle';
-
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 function App() {
   return (
@@ -50,6 +50,7 @@ function App() {
       <CookieBanner />
        <SiteThemeProvider>
       <BrowserRouter>
+      <AnalyticsTracker />
         <Routes>
           {/* Routes publiques */}
           <Route path="/" element={<Home />} />
