@@ -292,10 +292,10 @@ function Home() {
         image: res.data.promo_image || null,
       });
       setLookbook([
-        { title: res.data.lookbook_title_1, link: res.data.lookbook_link_1, image: res.data.lookbook_image_1 },
-        { title: res.data.lookbook_title_2, link: res.data.lookbook_link_2, image: res.data.lookbook_image_2 },
-        { title: res.data.lookbook_title_3, link: res.data.lookbook_link_3, image: res.data.lookbook_image_3 },
-      ].filter((item) => item.image));
+      { title: res.data.lookbook_title_1, link: res.data.lookbook_link_1, image: res.data.lookbook_image_1, active: res.data.lookbook_active_1 },
+      { title: res.data.lookbook_title_2, link: res.data.lookbook_link_2, image: res.data.lookbook_image_2, active: res.data.lookbook_active_2 },
+      { title: res.data.lookbook_title_3, link: res.data.lookbook_link_3, image: res.data.lookbook_image_3, active: res.data.lookbook_active_3 },
+    ].filter((item) => item.image && item.active !== '0')); 
     }).catch(() => {});
     api.get('/popup').then((res) => {
       if (res.data?.is_active && res.data?.products?.length > 0) setPopup(res.data);
