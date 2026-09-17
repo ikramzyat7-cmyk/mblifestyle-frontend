@@ -90,12 +90,11 @@ function AdminBanners() {
   };
 
   const toggleActive = async (banner) => {
-    const formData = new FormData();
-    formData.append('is_active', banner.is_active ? '0' : '1');
-    formData.append('_method', 'PUT');
-    await api.post(`/banners/${banner.id}`, formData);
-    fetchBanners();
-  };
+  const formData = new FormData();
+  formData.append('is_active', banner.is_active ? '0' : '1');
+  await api.post(`/banners/${banner.id}`, formData);
+  fetchBanners();
+};
 
   return (
     <div className="admin-layout">
