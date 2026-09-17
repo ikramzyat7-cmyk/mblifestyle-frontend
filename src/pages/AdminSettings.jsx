@@ -21,9 +21,9 @@ function AdminSettings() {
     promo_link: '',
     promo_image: '',
     promo_image_file: null,
-    lookbook_title_1: '', lookbook_link_1: '', lookbook_image_1: '',
-    lookbook_title_2: '', lookbook_link_2: '', lookbook_image_2: '',
-    lookbook_title_3: '', lookbook_link_3: '', lookbook_image_3: '',
+    lookbook_title_1: '', lookbook_link_1: '', lookbook_image_1: '', lookbook_active_1: true,
+    lookbook_title_2: '', lookbook_link_2: '', lookbook_image_2: '', lookbook_active_2: true,
+    lookbook_title_3: '', lookbook_link_3: '', lookbook_image_3: '', lookbook_active_3: true,
   });
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -48,12 +48,15 @@ function AdminSettings() {
         lookbook_title_1: res.data.lookbook_title_1 || '',
         lookbook_link_1: res.data.lookbook_link_1 || '',
         lookbook_image_1: res.data.lookbook_image_1 || '',
+        lookbook_active_1: res.data.lookbook_active_1 !== '0',
         lookbook_title_2: res.data.lookbook_title_2 || '',
         lookbook_link_2: res.data.lookbook_link_2 || '',
         lookbook_image_2: res.data.lookbook_image_2 || '',
+        lookbook_active_2: res.data.lookbook_active_2 !== '0',
         lookbook_title_3: res.data.lookbook_title_3 || '',
         lookbook_link_3: res.data.lookbook_link_3 || '',
         lookbook_image_3: res.data.lookbook_image_3 || '',
+        lookbook_active_3: res.data.lookbook_active_3 !== '0',
       }));
       setLoading(false);
     });
@@ -76,10 +79,13 @@ function AdminSettings() {
       formData.append('promo_link', form.promo_link);
       formData.append('lookbook_title_1', form.lookbook_title_1 || '');
       formData.append('lookbook_link_1', form.lookbook_link_1 || '');
+      formData.append('lookbook_active_1', form.lookbook_active_1 ? '1' : '0');
       formData.append('lookbook_title_2', form.lookbook_title_2 || '');
       formData.append('lookbook_link_2', form.lookbook_link_2 || '');
+      formData.append('lookbook_active_2', form.lookbook_active_2 ? '1' : '0');
       formData.append('lookbook_title_3', form.lookbook_title_3 || '');
       formData.append('lookbook_link_3', form.lookbook_link_3 || '');
+      formData.append('lookbook_active_3', form.lookbook_active_3 ? '1' : '0');
       if (form.lookbook_image_1_file) formData.append('lookbook_image_1_file', form.lookbook_image_1_file);
       if (form.lookbook_image_2_file) formData.append('lookbook_image_2_file', form.lookbook_image_2_file);
       if (form.lookbook_image_3_file) formData.append('lookbook_image_3_file', form.lookbook_image_3_file);
@@ -229,7 +235,16 @@ function AdminSettings() {
 
   {[1, 2, 3].map((n) => (
     <div key={n} style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid var(--admin-border)' }}>
-      <p style={{ fontWeight: '600', fontSize: '13px', marginBottom: '8px' }}>Photo {n}</p>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+        <p style={{ fontWeight: '600', fontSize: '13px', margin: 0 }}>Photo {n}</p>
+        <button
+  type="button"
+  className={`lookbook-toggle-btn ${form[`lookbook_active_${n}`] ? 'is-visible' : 'is-hidden'}`}
+  onClick={() => setForm({ ...form, [`lookbook_active_${n}`]: !form[`lookbook_active_${n}`] })}
+>
+  {form[`lookbook_active_${n}`] ? '● Visible' : '○ Masquée'}
+</button>
+      </div>
       <div className="apf-field-row">
         <div className="apf-field">
           <label>Titre</label>

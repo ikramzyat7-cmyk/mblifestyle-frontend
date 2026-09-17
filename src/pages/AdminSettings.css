@@ -110,3 +110,26 @@
     border-color: #333333 !important;
     color: #888888 !important;
   }
+  .lookbook-toggle-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lookbook-toggle-btn.is-visible {
+  background: #e6f7ec;
+  color: #1a9c4a;
+}
+
+.lookbook-toggle-btn.is-hidden {
+  background: #f1f1f1;
+  color: #888;
+}
+
+.lookbook-toggle-btn:hover {
+  opacity: 0.8;
+}
