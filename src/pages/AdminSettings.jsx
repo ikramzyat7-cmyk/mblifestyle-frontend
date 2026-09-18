@@ -9,6 +9,7 @@ function AdminSettings() {
     whatsapp_number: '',
     email: '',
     shop_name: '',
+    promo_active: true,
     instagram_url: '',
     address: '',
     working_hours: '',
@@ -40,6 +41,7 @@ function AdminSettings() {
         working_hours: res.data.working_hours || '',
         promo_banner: res.data.promo_banner || '',
         nouveautes_image: res.data.nouveautes_image || '',
+        promo_active: res.data.promo_active !== '0',
         promo_title: res.data.promo_title || '',
         promo_text: res.data.promo_text || '',
         promo_btn: res.data.promo_btn || '',
@@ -77,6 +79,7 @@ function AdminSettings() {
       formData.append('promo_text', form.promo_text);
       formData.append('promo_btn', form.promo_btn);
       formData.append('promo_link', form.promo_link);
+      formData.append('promo_active', form.promo_active ? '1' : '0');
       formData.append('lookbook_title_1', form.lookbook_title_1 || '');
       formData.append('lookbook_link_1', form.lookbook_link_1 || '');
       formData.append('lookbook_active_1', form.lookbook_active_1 ? '1' : '0');
@@ -174,7 +177,16 @@ function AdminSettings() {
 
               {/* ===== BANNIÈRE PROMO MILIEU ===== */}
               <div className="apf-card">
-                <h3>🎯 Bannière promotionnelle milieu page</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <h3>🎯 Bannière promotionnelle milieu page</h3>
+                  <button
+                    type="button"
+                    className={`lookbook-toggle-btn ${form.promo_active ? 'is-visible' : 'is-hidden'}`}
+                    onClick={() => setForm({ ...form, promo_active: !form.promo_active })}
+                  >
+                    {form.promo_active ? '● Visible' : '○ Masquée'}
+                  </button>
+                </div>
                 <p className="apf-photo-hint">Bannière affichée sous "Nos catégories" avec photo à droite</p>
                 <div className="apf-field">
                   <label>Titre principal</label>

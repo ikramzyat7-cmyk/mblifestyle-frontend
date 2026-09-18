@@ -290,6 +290,7 @@ function Home() {
         btn: res.data.promo_btn || "VOIR LA COLLECTION",
         link: res.data.promo_link || '/catalogue',
         image: res.data.promo_image || null,
+        active: res.data.promo_active !== '0',
       });
       setLookbook([
       { title: res.data.lookbook_title_1, link: res.data.lookbook_link_1, image: res.data.lookbook_image_1, active: res.data.lookbook_active_1 },
@@ -483,6 +484,7 @@ function Home() {
       )}
 
       {/* 9. BANNIÈRE COLLECTION */}
+      {promoData.active && (
       <div ref={promoRef} className={`fagor-banner scroll-animate ${promoVisible ? 'scroll-visible' : ''}`}>
         <div className="fagor-banner__photo">
           <div className="fagor-banner__circle">
@@ -498,8 +500,9 @@ function Home() {
           <h2 className="fagor-banner__title">{promoData.title}</h2>
           <div className="fagor-banner__promo">{promoData.text}</div>
           <button className="fagor-banner__cta" onClick={() => navigate(promoData.link || '/catalogue')}>{promoData.btn}</button>
-        </div>
+                </div>
       </div>
+      )}
 
       {/* 10. NOUVEAUTÉS */}
       {newProducts.length > 0 && (
