@@ -65,6 +65,7 @@ function AdminOrders() {
   const [searchParams] = useSearchParams();
   const [filter, setFilter] = useState(searchParams.get('status') || 'all');
   const [deliveryFilter, setDeliveryFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('success');
 
@@ -148,11 +149,18 @@ function AdminOrders() {
     ? orders
     : orders.filter((o) => o.status === filter);
 
-  // Filtre livraison
+    // Filtre livraison
   if (deliveryFilter === 'delivered') {
     filteredOrders = filteredOrders.filter((o) => o.is_delivered);
   } else if (deliveryFilter === 'not_delivered') {
     filteredOrders = filteredOrders.filter((o) => !o.is_delivered);
+  }
+
+  // Filtre recherche par code de suivi
+  if (searchTerm.trim() !== '') {
+    filteredOrders = filteredOrders.filter((o) =>
+      o.order_code?.toLowerCase().includes(searchTerm.trim().toLowerCase())
+    );
   }
 
   const counts = {
@@ -183,6 +191,17 @@ function AdminOrders() {
             {message}
           </p>
         )}
+
+                {/* Recherche par code de suivi */}
+        <div className="orders-search">
+          <input
+            type="text"
+            placeholder="🔍 Rechercher par code de suivi (ex: MB-1577)"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="orders-search-input"
+          />
+        </div>
 
         {/* Filtre statut */}
         <div className="orders-filters">

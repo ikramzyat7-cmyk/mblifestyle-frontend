@@ -466,3 +466,20 @@
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
+.orders-search {
+  margin-bottom: 16px;
+}
+
+.orders-search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.orders-search-input:focus {
+  outline: none;
+  border-color: #111111;
+}
