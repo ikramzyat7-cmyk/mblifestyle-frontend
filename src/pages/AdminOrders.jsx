@@ -133,7 +133,7 @@ function AdminOrders() {
     }
   };
 
-  const handleUndeliver = async (id) => {
+    const handleUndeliver = async (id) => {
     if (!window.confirm('Marquer cette commande comme non livrée ?')) return;
     try {
       await api.patch(`/orders/${id}/undeliver`);
@@ -141,6 +141,18 @@ function AdminOrders() {
       fetchOrders();
     } catch {
       showMessage('Erreur lors de la mise à jour.', 'error');
+    }
+  };
+
+  const handleReset = async (type, label) => {
+    if (!window.confirm(`Supprimer définitivement toutes les commandes : ${label} ? Cette action est irréversible.`)) return;
+    try {
+      const res = await api.delete(`/orders/reset/${type}`);
+      showMessage(`✅ ${res.data.count} commande(s) supprimée(s).`);
+      fetchOrders();
+      window.dispatchEvent(new Event('refreshSidebar'));
+    } catch {
+      showMessage('❌ Erreur lors de la réinitialisation.', 'error');
     }
   };
 
@@ -176,8 +188,11 @@ function AdminOrders() {
     <div className="admin-layout">
       <AdminSidebar />
       <main className="admin-main">
-        <div className="admin-header-bar">
+                <div className="admin-header-bar">
           <h1>Commandes</h1>
+          <button className="orders-reset-all-btn" onClick={() => handleReset('all', 'TOUTES les commandes')}>
+            🗑️ Tout réinitialiser
+          </button>
           <div className="orders-stats">
             <span className="orders-stat pending">{counts.pending} en attente</span>
             <span className="orders-stat confirmed">{counts.confirmed} confirmées</span>
@@ -204,35 +219,55 @@ function AdminOrders() {
         </div>
 
         {/* Filtre statut */}
-        <div className="orders-filters">
+                <div className="orders-filters">
           {[
             { key: 'all', label: 'Toutes' },
             { key: 'pending', label: 'En attente' },
             { key: 'confirmed', label: 'Confirmées' },
             { key: 'cancelled', label: 'Annulées' },
           ].map((f) => (
-            <button key={f.key}
-              className={`orders-filter-btn ${filter === f.key ? 'active' : ''}`}
-              onClick={() => setFilter(f.key)}>
-              {f.label}
-              <span className="orders-filter-count">{counts[f.key]}</span>
-            </button>
+            <div key={f.key} className="orders-filter-group">
+              <button
+                className={`orders-filter-btn ${filter === f.key ? 'active' : ''}`}
+                onClick={() => setFilter(f.key)}>
+                {f.label}
+                <span className="orders-filter-count">{counts[f.key]}</span>
+              </button>
+              {f.key !== 'all' && counts[f.key] > 0 && (
+                <button
+                  className="orders-reset-btn"
+                  title={`Réinitialiser : ${f.label}`}
+                  onClick={() => handleReset(f.key, f.label)}>
+                  🗑️
+                </button>
+              )}
+            </div>
           ))}
         </div>
 
         {/* Filtre livraison */}
-        <div className="orders-delivery-filters">
+                <div className="orders-delivery-filters">
           <span className="orders-delivery-label">🚚 Livraison :</span>
           {[
             { key: 'all', label: 'Toutes' },
-            { key: 'delivered', label: `✅ Livrées (${counts.delivered})` },
-            { key: 'not_delivered', label: `⏳ Non livrées (${counts.not_delivered})` },
+            { key: 'delivered', label: `✅ Livrées (${counts.delivered})`, resetLabel: 'commandes livrées' },
+            { key: 'not_delivered', label: `⏳ Non livrées (${counts.not_delivered})`, resetLabel: 'commandes non livrées' },
           ].map((f) => (
-            <button key={f.key}
-              className={`orders-delivery-btn ${deliveryFilter === f.key ? 'active' : ''}`}
-              onClick={() => setDeliveryFilter(f.key)}>
-              {f.label}
-            </button>
+            <div key={f.key} className="orders-filter-group">
+              <button
+                className={`orders-delivery-btn ${deliveryFilter === f.key ? 'active' : ''}`}
+                onClick={() => setDeliveryFilter(f.key)}>
+                {f.label}
+              </button>
+              {f.key !== 'all' && (
+                <button
+                  className="orders-reset-btn"
+                  title={`Réinitialiser : ${f.resetLabel}`}
+                  onClick={() => handleReset(f.key, f.resetLabel)}>
+                  🗑️
+                </button>
+              )}
+            </div>
           ))}
         </div>
 

@@ -483,3 +483,38 @@
   outline: none;
   border-color: #111111;
 }
+.orders-filter-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+}
+
+.orders-reset-btn {
+  background: #fdecec;
+  border: 1px solid #f5c2c2;
+  color: #cc0000;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.orders-reset-btn:hover {
+  background: #f8d7d7;
+}
+
+.orders-reset-all-btn {
+  background: #cc0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.orders-reset-all-btn:hover {
+  background: #a80000;
+}
