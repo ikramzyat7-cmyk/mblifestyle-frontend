@@ -556,14 +556,24 @@ function ProductDetail() {
                     <textarea placeholder="Partagez votre expérience..." value={reviewForm.comment}
                       onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })} rows={3} required />
                   </div>
-                  <div className="pd-review-field">
-                    <label>📷 Ajouter une photo (optionnel)</label>
-                    <input type="file" accept="image/*"
-                      onChange={(e) => setReviewForm({ ...reviewForm, image: e.target.files[0] })} />
-                    {reviewForm.image && (
-                      <img src={URL.createObjectURL(reviewForm.image)} alt="Aperçu"
-                        style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '6px', marginTop: '8px', border: '2px solid #cc0000' }} />
-                    )}
+                                    <div className="pd-review-field">
+                    <label>Ajouter une photo (optionnel)</label>
+                    <label className="pd-upload-zone">
+                      <input type="file" accept="image/*" style={{ display: 'none' }}
+                        onChange={(e) => setReviewForm({ ...reviewForm, image: e.target.files[0] })} />
+                      {reviewForm.image ? (
+                        <img src={URL.createObjectURL(reviewForm.image)} alt="Aperçu" className="pd-upload-preview" />
+                      ) : (
+                        <>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="26" height="26" strokeWidth="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                          </svg>
+                          <span>Cliquez pour ajouter une photo</span>
+                        </>
+                      )}
+                    </label>
                     <small style={{ color: '#888', fontSize: '11px' }}>Montrez le produit porté — max 5MB</small>
                   </div>
                   {reviewError && <p className="pd-review-error">{reviewError}</p>}
