@@ -123,14 +123,10 @@ function AdminReviews() {
                   </div>
                                     <div className="review-info">
                     <p className="review-name">{review.name}</p>
-                                        {review.product ? (
-                      review.product_id ? (
-                        <Link to={`/produit/${review.product_id}`} target="_blank" className="review-source review-source-product">
-                          🛍️ Avis produit : {review.product} →
-                        </Link>
-                      ) : (
-                        <p className="review-source review-source-product">🛍️ Avis produit : {review.product}</p>
-                      )
+                        {review.product_id ? (
+                      <Link to={`/produit/${review.product_id}`} target="_blank" className="review-source review-source-product">
+                        🛍️ Avis produit : {review.product} →
+                      </Link>
                     ) : (
                       <p className="review-source review-source-site">🌐 Avis général (page d'accueil)</p>
                     )}
