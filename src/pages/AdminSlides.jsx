@@ -141,11 +141,10 @@ function AdminSlides() {
                 <h2>{editingId ? 'Modifier le slide' : 'Ajouter un slide'}</h2>
 
                 {/* Style */}
-                <div className="apf-field">
+                                <div className="apf-field">
                   <label>Style du slide</label>
                   <select value={form.style} onChange={(e) => setForm({ ...form, style: e.target.value })}>
                     <option value="default">Standard (image/vidéo plein écran)</option>
-                    <option value="fagor-banner">Bannière Fagor (fond noir + photo produit)</option>
                   </select>
                 </div>
 
