@@ -196,6 +196,7 @@ function ProductDetail() {
       formData.append('rating', reviewForm.rating);
       formData.append('comment', reviewForm.comment);
       formData.append('product', product.name);
+      formData.append('product_id', product.id);
       if (reviewForm.image) formData.append('image', reviewForm.image);
       await api.post('/reviews', formData);
       setReviewSubmitted(true);

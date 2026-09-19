@@ -3,6 +3,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminReviews.css';
 import LoadingScreen from '../components/LoadingScreen';
+import { Link } from 'react-router-dom';
 import { storageUrl } from '../api/config';
 function StarDisplay({ rating }) {
   return (
@@ -122,8 +123,14 @@ function AdminReviews() {
                   </div>
                                     <div className="review-info">
                     <p className="review-name">{review.name}</p>
-                    {review.product ? (
-                      <p className="review-source review-source-product">🛍️ Avis produit : {review.product}</p>
+                                        {review.product ? (
+                      review.product_id ? (
+                        <Link to={`/produit/${review.product_id}`} target="_blank" className="review-source review-source-product">
+                          🛍️ Avis produit : {review.product} →
+                        </Link>
+                      ) : (
+                        <p className="review-source review-source-product">🛍️ Avis produit : {review.product}</p>
+                      )
                     ) : (
                       <p className="review-source review-source-site">🌐 Avis général (page d'accueil)</p>
                     )}
