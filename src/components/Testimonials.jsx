@@ -88,7 +88,7 @@ function Testimonials() {
               <label>Produit acheté</label>
               <input
                 type="text"
-                placeholder="Ex: Réfrigérateur Samsung 400L"
+                placeholder="Ex: Dior, Balenciaga, ..."
                 value={form.product}
                 onChange={(e) => setForm({ ...form, product: e.target.value })}
               />
