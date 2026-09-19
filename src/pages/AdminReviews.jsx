@@ -120,9 +120,13 @@ function AdminReviews() {
                   <div className="review-avatar">
                     {review.name.charAt(0).toUpperCase()}
                   </div>
-                  <div className="review-info">
+                                    <div className="review-info">
                     <p className="review-name">{review.name}</p>
-                    {review.product && <p className="review-product">Produit : {review.product}</p>}
+                    {review.product ? (
+                      <p className="review-source review-source-product">🛍️ Avis produit : {review.product}</p>
+                    ) : (
+                      <p className="review-source review-source-site">🌐 Avis général (page d'accueil)</p>
+                    )}
                     <StarDisplay rating={review.rating} />
                   </div>
                   <div className="review-meta">

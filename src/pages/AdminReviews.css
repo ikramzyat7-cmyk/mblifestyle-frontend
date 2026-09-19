@@ -108,3 +108,21 @@
 .review-photo img:hover {
   transform: scale(1.05);
 }
+.review-source {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin: 4px 0;
+}
+
+.review-source-product {
+  background: #e6f0ff;
+  color: #1a56db;
+}
+
+.review-source-site {
+  background: #f0f0f0;
+  color: #666666;
+}
