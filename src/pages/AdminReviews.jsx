@@ -3,6 +3,7 @@ import AdminSidebar from '../components/AdminSidebar';
 import api from '../api/axios';
 import './AdminReviews.css';
 import LoadingScreen from '../components/LoadingScreen';
+import { storageUrl } from '../api/config';
 function StarDisplay({ rating }) {
   return (
     <div className="star-display">
@@ -134,7 +135,17 @@ function AdminReviews() {
                   </div>
                 </div>
 
-                <p className="review-comment">"{review.comment}"</p>
+                                <p className="review-comment">"{review.comment}"</p>
+
+                {review.image && (
+                  <div className="review-photo">
+                    <img
+                      src={`${storageUrl(review.image)}`}
+                      alt="Photo client"
+                      onClick={() => window.open(`${storageUrl(review.image)}`, '_blank')}
+                    />
+                  </div>
+                )}
 
                 <div className="review-actions">
                   {review.status !== 'approved' && (

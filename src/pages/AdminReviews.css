@@ -91,3 +91,20 @@
   .star-display .star.filled {
     color: #f59e0b;
   }
+  .review-photo {
+  margin: 10px 0;
+}
+
+.review-photo img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.review-photo img:hover {
+  transform: scale(1.05);
+}
