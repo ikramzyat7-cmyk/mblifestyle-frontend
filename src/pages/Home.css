@@ -955,7 +955,8 @@
   font-weight: 700;
   padding: 4px 10px;
   border-radius: 2px;
-  text-transform: uppercase;
+  text-transform: none;
+  font-weight: 700;       /* au lieu de 900, moins lourd */
   letter-spacing: 0.5px;
 }
 
