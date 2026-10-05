@@ -95,6 +95,7 @@ function NewArrivalsSection({ products, featuredImage }) {
   const [startIndex, setStartIndex] = useState(0);
   const visibleCount = 4;
   const intervalRef = useRef(null);
+  const videoRefs = useRef({});
 
   useEffect(() => {
     if (products.length <= visibleCount) return;
@@ -261,7 +262,7 @@ function Home() {
   });
   const intervalRef = useRef(null);
   const isCurrentSlideVideo = slides[currentSlide]?.video != null;
-
+  const videoRefs = useRef({});
   // Scroll animations
   const [selectionRef, selectionVisible] = useScrollAnimation();
   const [lookbookRef, lookbookVisible] = useScrollAnimation();
@@ -303,21 +304,35 @@ function Home() {
     }).catch(() => {});
   }, []);
 
+  // Minuteur de 5 s seulement pour les slides photo.
+  // Pour la vidéo, c'est onEnded qui passe à la slide suivante.
   useEffect(() => {
-    if (slides.length <= 1) return;
-    intervalRef.current = setInterval(() => setCurrentSlide((prev) => (prev + 1) % slides.length), 5000);
-    return () => clearInterval(intervalRef.current);
-  }, [slides]);
+    if (slides.length <= 1 || isCurrentSlideVideo) return;
+    const timer = setTimeout(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [slides, currentSlide, isCurrentSlideVideo]);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-    clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => setCurrentSlide((prev) => (prev + 1) % slides.length), 5000);
-  };
+  // Relance la vidéo depuis le début quand sa slide devient active
+  useEffect(() => {
+    slides.forEach((slide) => {
+      const el = videoRefs.current[slide.id];
+      if (!el) return;
+      if (slides[currentSlide]?.id === slide.id) {
+        el.currentTime = 0;
+        el.play().catch(() => {});
+      } else {
+        el.pause();
+      }
+    });
+  }, [currentSlide, slides]);
+
+  const goToSlide = (index) => setCurrentSlide(index);
 
   return (
     <div className="home-page">
-      <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} forceWhite={isCurrentSlideVideo} />
+      <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <PromoPopup />
 
       {/* 1. SLIDER */}
@@ -346,7 +361,16 @@ function Home() {
                     <div className="sfb-badge"><span>QUALITÉ<br/>GARANTIE</span><div className="sfb-badge-stars">★★★★★</div></div>
                   </div>
                 ) : slide.video ? (
-                  <video className="slide-video" autoPlay muted loop playsInline src={`${storageUrl(slide.video)}`} />
+                  <video
+  ref={(el) => { videoRefs.current[slide.id] = el; }}
+  className="slide-video"
+  muted
+  playsInline
+  preload="auto"
+  src={`${storageUrl(slide.video)}`}
+  onEnded={() => setCurrentSlide((index + 1) % slides.length)}
+  onError={() => setCurrentSlide((index + 1) % slides.length)}
+/>
                 ) : (
                   <div className="slide-bg" style={{
                     backgroundImage: slide.image ? `url(${storageUrl(slide.image)})` : 'none',
