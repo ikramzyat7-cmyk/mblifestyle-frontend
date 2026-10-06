@@ -419,3 +419,29 @@
 .pc-wishlist-btn svg {
   stroke: currentColor;
 }
+@media (max-width: 768px) {
+  .pc-info { padding: 10px; }
+  .pc-name {
+    font-size: 13px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pc-price-new { font-size: 15px; }
+  .pc-price-old { font-size: 12px; }
+
+  /* Pas de survol sur tactile : on garde seulement le bouton du bas */
+  .pc-quick-actions { display: none; }
+
+  /* Quantité au-dessus, bouton Commander pleine largeur */
+  .pc-btn-row { flex-direction: column; align-items: stretch; gap: 8px; }
+  .pc-qty { display: flex; width: 100%; justify-content: space-between; align-items: center; }
+  .pc-qty button { width: 36px; height: 36px; }
+  .pc-btn-cart { width: 100%; min-height: 44px; font-size: 14px; font-weight: 700; }
+
+  /* Zones tactiles plus grandes */
+  .pc-color-dot { width: 22px; height: 22px; }
+  .pc-size-chip { min-width: 36px; min-height: 36px; }
+}

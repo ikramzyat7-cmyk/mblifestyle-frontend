@@ -124,7 +124,7 @@ function Header({ searchTerm, onSearchChange, forceWhite }) {
               href={settings.instagram_url || 'https://instagram.com'}
               target="_blank"
               rel="noopener noreferrer"
-              className="icon-btn"
+                            className="icon-btn header-instagram"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22">
                 <rect x="2" y="2" width="20" height="20" rx="5" strokeWidth="2" />
@@ -160,7 +160,15 @@ function Header({ searchTerm, onSearchChange, forceWhite }) {
               <Link to="/nouveautes" onClick={() => setMobileMenuOpen(false)}>Nouveautés</Link>
               <Link to="/categories" onClick={() => setMobileMenuOpen(false)}>Catégories</Link>
               <Link to="/catalogue" onClick={() => setMobileMenuOpen(false)}>Nos produits</Link>
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+                            <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+              <a
+                href={settings.instagram_url || 'https://instagram.com'}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Instagram
+              </a>
             </nav>
             <div className="mobile-menu-footer">© {new Date().getFullYear()} {shopName}</div>
           </div>
