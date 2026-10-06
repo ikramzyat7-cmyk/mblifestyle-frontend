@@ -175,13 +175,11 @@ function ProductCard({ product }) {
         {product.brand && <span className="pc-brand">{product.brand}</span>}
         <h3 className="pc-name">{product.name}</h3>
 
-        {specs.length > 0 && (
-          <div className="pc-specs">
-            {specs.map(([key, value]) => value && (
-              <span key={key} className="pc-spec-tag">{value}</span>
-            ))}
-          </div>
-        )}
+                <div className="pc-specs">
+          {specs.map(([key, value]) => value && (
+            <span key={key} className="pc-spec-tag">{value}</span>
+          ))}
+        </div>
 
         <div className="pc-price-row">
           {discountedPrice ? (
@@ -195,19 +193,17 @@ function ProductCard({ product }) {
         </div>
 
         {/* Couleurs */}
-        {hasColors && (
-          <div className="pc-colors" onClick={stopPropagation}>
-            {product.colors.map((c) => (
-              <button
-                key={c.hex}
-                className={`pc-color-dot ${selectedColor === c.hex ? 'active' : ''} ${c.stock <= 0 ? 'out' : ''}`}
-                style={{ backgroundColor: c.hex }}
-                onClick={(e) => handleColorSelect(e, c.hex)}
-                title={c.stock <= 0 ? 'Rupture' : ''}
-              />
-            ))}
-          </div>
-        )}
+               <div className="pc-colors" onClick={stopPropagation}>
+          {hasColors && product.colors.map((c) => (
+            <button
+              key={c.hex}
+              className={`pc-color-dot ${selectedColor === c.hex ? 'active' : ''} ${c.stock <= 0 ? 'out' : ''}`}
+              style={{ backgroundColor: c.hex }}
+              onClick={(e) => handleColorSelect(e, c.hex)}
+              title={c.stock <= 0 ? 'Rupture' : ''}
+            />
+          ))}
+        </div>
 
         {/* Tailles — apparaissent après sélection couleur */}
         {selectedColor && hasSizes && (

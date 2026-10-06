@@ -445,3 +445,44 @@
   .pc-color-dot { width: 22px; height: 22px; }
   .pc-size-chip { min-width: 36px; min-height: 36px; }
 }
+/* ===== Cartes de même taille ===== */
+.pc-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pc-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Nom : toujours 2 lignes de place */
+.pc-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+  line-height: 1.3;
+}
+
+/* Place réservée même sans spécifications ni couleurs */
+.pc-specs  { min-height: 26px; }
+.pc-colors { min-height: 28px; }
+
+/* Pied de carte toujours collé en bas, même hauteur */
+.pc-footer {
+  margin-top: auto;
+  padding-top: 8px;
+  min-height: 52px;
+  display: flex;
+  align-items: flex-end;
+}
+.pc-footer > * { width: 100%; }
+.pc-btn-rupture { width: 100%; min-height: 44px; }
+
+@media (max-width: 768px) {
+  .pc-footer { min-height: 100px; }
+}
